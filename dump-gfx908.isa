@@ -1,0 +1,4060 @@
+	.text
+	.amdgcn_target "amdgcn-amd-amdhsa--gfx908+sram-ecc"
+	.weak	gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer ; -- Begin function gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer
+	.p2align	8
+	.type	gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer,@function
+gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer: ; @gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer
+; %bb.0:                                ; %entry
+	s_mov_b32 s12, 0x71625345
+	v_mov_b32_e32 v3, s12
+	v_mul_hi_i32 v3, s10, v3
+	s_mov_b32 s24, s11
+	s_add_u32 s32, s24, 0x1400
+	s_add_u32 flat_scratch_lo, s8, s24
+	v_lshrrev_b32_e32 v5, 31, v3
+	v_ashrrev_i32_e32 v3, 10, v3
+	s_mov_b32 s8, 0xfff6f8
+	v_mov_b32_e32 v4, s10
+	v_add_u32_e32 v5, v3, v5
+	v_mad_i32_i24 v3, v5, s8, v4
+	v_ashrrev_i32_e32 v4, 31, v3
+	v_lshrrev_b32_e32 v4, 30, v4
+	v_add_u32_e32 v4, v3, v4
+	v_and_b32_e32 v7, -4, v4
+	v_sub_u32_e32 v3, v3, v7
+	v_lshrrev_b32_e32 v6, 1, v0
+	v_lshlrev_b32_e32 v3, 5, v3
+	v_or_b32_e32 v7, v3, v6
+	s_movk_i32 s8, 0x380
+	v_mul_lo_u32 v7, v7, s8
+	v_and_b32_e32 v8, 62, v0
+	v_sub_u32_e32 v9, v0, v8
+	v_mul_i32_i24_e32 v5, 0xe0, v5
+	s_addc_u32 flat_scratch_hi, s9, 0
+	s_load_dwordx2 s[8:9], s[4:5], 0x4
+	s_load_dwordx2 s[16:17], s[6:7], 0x0
+	s_load_dwordx2 s[10:11], s[6:7], 0x8
+	v_lshl_add_u32 v8, v9, 1, v5
+	v_lshl_add_u32 v10, v8, 2, v7
+	v_ashrrev_i32_e32 v11, 31, v10
+	v_lshlrev_b64 v[7:8], 1, v[10:11]
+	v_and_b32_e32 v12, 48, v0
+	v_sub_u32_e32 v15, v0, v12
+	v_ashrrev_i32_e32 v12, 31, v15
+	v_lshrrev_b32_e32 v12, 28, v12
+	v_add_u32_e32 v16, v15, v12
+	v_ashrrev_i32_e32 v13, 4, v16
+	v_lshrrev_b32_e32 v12, 4, v0
+	v_lshlrev_b32_e32 v13, 2, v13
+	v_or_b32_e32 v5, v5, v12
+	v_lshl_add_u32 v5, v5, 2, v13
+	s_mov_b32 s4, 0x92492493
+	v_mul_hi_i32 v14, v5, s4
+	v_ashrrev_i32_e32 v4, 2, v4
+	v_lshlrev_b32_e32 v4, 6, v4
+	v_lshlrev_b32_e32 v6, 2, v6
+	v_add_u32_e32 v14, v14, v5
+	v_lshrrev_b32_e32 v17, 31, v14
+	v_ashrrev_i32_e32 v14, 2, v14
+	v_add_u32_e32 v14, v14, v17
+	v_mul_lo_u32 v17, v14, -7
+	v_lshl_or_b32 v21, v9, 8, v6
+	s_mov_b32 s5, 0x78787879
+	v_mov_b32_e32 v18, 0xffff
+	v_add_u32_e32 v17, v17, v5
+	v_mul_hi_i32 v9, v17, s4
+	s_mov_b32 s4, 0xfffedf
+	v_lshlrev_b32_e32 v6, 1, v21
+	s_nop 0
+	s_waitcnt lgkmcnt(0)
+	s_nop 0
+	global_load_dwordx4 v[24:27], v[7:8], s[10:11]
+	v_and_b32_e32 v7, -16, v16
+	v_sub_u32_e32 v22, v15, v7
+	v_lshl_add_u32 v8, v22, 2, v4
+	v_mul_hi_i32 v7, v8, s12
+	v_add_u32_e32 v9, v9, v17
+	s_movk_i32 s12, 0x121
+	v_mul_lo_u32 v15, v14, s12
+	v_lshrrev_b32_e32 v16, 31, v7
+	v_ashrrev_i32_e32 v7, 7, v7
+	v_add_u32_e32 v7, v7, v16
+	v_mad_i32_i24 v19, v7, s4, v8
+	v_mul_hi_i32 v8, v19, s5
+	s_movk_i32 s4, 0xffef
+	s_mov_b32 s5, 0x9080
+	v_mad_i32_i24 v15, v7, s5, v15
+	v_lshrrev_b32_e32 v16, 31, v8
+	v_ashrrev_i32_e32 v8, 3, v8
+	v_add_u32_e32 v8, v8, v16
+	v_lshrrev_b32_e32 v16, 31, v9
+	v_ashrrev_i32_e32 v9, 2, v9
+	v_add_u32_e32 v23, v9, v16
+	v_mul_lo_u32 v20, v8, s4
+	v_mul_lo_u32 v28, v23, -7
+	v_add_u32_e32 v16, v8, v23
+	v_mul_lo_u32 v29, v16, 17
+	v_add_u32_e32 v9, v20, v19
+	v_add_u32_e32 v20, v28, v17
+	v_add3_u32 v19, v9, v20, -3
+	v_cmp_gt_u32_e32 vcc, 17, v16
+	v_cmp_gt_u32_e64 s[4:5], 17, v19
+	v_add3_u32 v17, v15, v29, v19
+	s_and_b64 s[12:13], vcc, s[4:5]
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v25, v18, v25, v25
+	v_bfi_b32 v24, v18, v24, v24
+	v_bfi_b32 v27, v18, v27, v27
+	v_bfi_b32 v26, v18, v26, v26
+	v_mov_b32_e32 v18, 0
+	ds_write2_b64 v6, v[24:25], v[26:27] offset1:32
+	s_and_saveexec_b64 s[4:5], s[12:13]
+	; mask branch BB0_2
+	s_cbranch_execz BB0_2
+BB0_1:                                  ; %if.then.i.i15.i
+	v_ashrrev_i32_e32 v18, 31, v17
+	v_lshlrev_b64 v[24:25], 1, v[17:18]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v18, v[24:25]
+BB0_2:                                  ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE
+	s_or_b64 exec, exec, s[4:5]
+	s_lshr_b32 s4, s8, 16
+	s_mul_i32 s4, s4, s9
+	v_mul_u32_u24_e32 v15, s4, v0
+	s_getreg_b32 s4, hwreg(HW_REG_SH_MEM_BASES, 0, 16)
+	v_mul_u32_u24_e32 v1, s9, v1
+	v_add3_u32 v15, v15, v1, v2
+	v_mov_b32_e32 v1, 16
+	s_lshl_b32 s4, s4, 16
+	v_cmp_ne_u32_e32 vcc, 0, v1
+	v_mov_b32_e32 v2, s4
+	v_cndmask_b32_e32 v2, 0, v2, vcc
+	v_cndmask_b32_e32 v1, 0, v1, vcc
+	v_lshlrev_b32_e32 v24, 4, v15
+	v_mov_b32_e32 v25, 0
+	ds_write_b8 v24, v25 offset:2051
+	ds_write_b8 v24, v25 offset:2050
+	ds_write_b8 v24, v25 offset:2049
+	ds_write_b8 v24, v25 offset:2048
+	ds_write_b8 v24, v25 offset:2055
+	ds_write_b8 v24, v25 offset:2054
+	ds_write_b8 v24, v25 offset:2053
+	ds_write_b8 v24, v25 offset:2052
+	ds_write_b8 v24, v25 offset:2059
+	ds_write_b8 v24, v25 offset:2058
+	ds_write_b8 v24, v25 offset:2057
+	ds_write_b8 v24, v25 offset:2056
+	ds_write_b8 v24, v25 offset:2063
+	ds_write_b8 v24, v25 offset:2062
+	ds_write_b8 v24, v25 offset:2061
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v18
+	v_mov_b32_e32 v18, 1
+	ds_write_b8 v24, v18 offset:2060
+	v_add_u32_e32 v24, 1, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v24
+	v_cmp_lt_i32_e64 s[4:5], 16, v25
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_4
+BB0_3:                                  ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i6811.i
+	v_subrev_u32_e32 v25, 17, v25
+	v_add_u32_e32 v18, 1, v7
+BB0_4:                                  ; %if.end20.i.i705.i.i.i.i6841.i
+	s_or_b64 exec, exec, s[8:9]
+	v_subrev_u32_e32 v26, 17, v24
+	v_cndmask_b32_e32 v24, v26, v24, vcc
+	v_sub_u32_e32 v25, v25, v8
+	v_sub_u32_e32 v24, v24, v9
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_6
+	s_cbranch_execz BB0_6
+BB0_5:                                  ; %if.then.i.i6857.i
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v18, v17, v18
+	v_add3_u32 v24, v18, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_6:                                  ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE1
+	s_or_b64 exec, exec, s[4:5]
+	v_lshlrev_b32_e32 v15, 4, v15
+	v_mov_b32_e32 v18, 0
+	ds_write_b8 v15, v18 offset:3075
+	ds_write_b8 v15, v18 offset:3074
+	ds_write_b8 v15, v18 offset:3073
+	ds_write_b8 v15, v18 offset:3072
+	ds_write_b8 v15, v18 offset:3079
+	ds_write_b8 v15, v18 offset:3078
+	ds_write_b8 v15, v18 offset:3077
+	ds_write_b8 v15, v18 offset:3076
+	ds_write_b8 v15, v18 offset:3083
+	ds_write_b8 v15, v18 offset:3082
+	ds_write_b8 v15, v18 offset:3081
+	ds_write_b8 v15, v18 offset:3080
+	ds_write_b8 v15, v18 offset:3087
+	ds_write_b8 v15, v18 offset:3086
+	ds_write_b8 v15, v18 offset:3085
+	v_mov_b32_e32 v18, 2
+	ds_write_b8 v15, v18 offset:3084
+	v_add_u32_e32 v18, 2, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v18
+	v_addc_co_u32_e64 v24, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v18
+	v_cmp_lt_i32_e64 s[4:5], 16, v24
+	v_mov_b32_e32 v15, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:8
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_8
+BB0_7:                                  ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i6645.i
+	v_subrev_u32_e32 v24, 17, v24
+	v_add_u32_e32 v15, 1, v7
+BB0_8:                                  ; %if.end20.i.i705.i.i.i.i6675.i
+	s_or_b64 exec, exec, s[8:9]
+	v_subrev_u32_e32 v25, 17, v18
+	v_cndmask_b32_e32 v18, v25, v18, vcc
+	v_sub_u32_e32 v24, v24, v8
+	v_sub_u32_e32 v18, v18, v9
+	v_add_u32_e32 v25, v24, v16
+	v_add_u32_e32 v26, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v25
+	v_cmp_gt_u32_e64 s[4:5], 17, v26
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v25, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_10
+	s_cbranch_execz BB0_10
+BB0_9:                                  ; %if.then.i.i6691.i
+	v_sub_u32_e32 v15, v15, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v15, v15, s8
+	v_mul_lo_u32 v24, v24, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v15, v17, v15
+	v_add3_u32 v24, v15, v24, v18
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v25, v[24:25]
+BB0_10:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE2
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 3, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v18
+	v_addc_co_u32_e64 v24, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v18
+	v_cmp_lt_i32_e64 s[4:5], 16, v24
+	v_mov_b32_e32 v15, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v25 offset:16
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_12
+BB0_11:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i6479.i
+	v_subrev_u32_e32 v24, 17, v24
+	v_add_u32_e32 v15, 1, v7
+BB0_12:                                 ; %if.end20.i.i705.i.i.i.i6509.i
+	s_or_b64 exec, exec, s[8:9]
+	v_subrev_u32_e32 v25, 17, v18
+	v_cndmask_b32_e32 v18, v25, v18, vcc
+	v_sub_u32_e32 v24, v24, v8
+	v_sub_u32_e32 v18, v18, v9
+	v_add_u32_e32 v25, v24, v16
+	v_add_u32_e32 v26, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v25
+	v_cmp_gt_u32_e64 s[4:5], 17, v26
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v25, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_14
+	s_cbranch_execz BB0_14
+BB0_13:                                 ; %if.then.i.i6525.i
+	v_sub_u32_e32 v15, v15, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v15, v15, s8
+	v_mul_lo_u32 v24, v24, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v15, v17, v15
+	v_add3_u32 v24, v15, v24, v18
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v25, v[24:25]
+BB0_14:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE3
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v15, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v15
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v25 offset:24
+	v_mov_b32_e32 v25, v15
+	v_mov_b32_e32 v24, v14
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_16
+BB0_15:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i6254.i
+	v_add_u32_e32 v25, -1, v15
+	v_add_u32_e32 v24, 1, v14
+BB0_16:                                 ; %if.end20.i.i.i.i.i.i6282.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v15, -7, v18
+	v_cndmask_b32_e32 v15, v15, v18, vcc
+	v_sub_u32_e32 v18, v25, v23
+	v_sub_u32_e32 v15, v15, v20
+	v_add_u32_e32 v25, v18, v16
+	v_add_u32_e32 v26, v15, v19
+	v_cmp_gt_u32_e32 vcc, 17, v25
+	v_cmp_gt_u32_e64 s[4:5], 17, v26
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v25, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_18
+	s_cbranch_execz BB0_18
+BB0_17:                                 ; %if.then.i.i6359.i
+	v_sub_u32_e32 v24, v24, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v24, v24, s8
+	v_mul_lo_u32 v18, v18, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v24, v24, v17
+	v_add3_u32 v24, v24, v18, v15
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v25, v[24:25]
+BB0_18:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE4
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v25 offset:2
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_20
+BB0_19:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i6088.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_20:                                 ; %if.end20.i.i.i.i.i.i6116.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 1, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_22
+BB0_21:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i6147.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_22:                                 ; %if.end20.i.i705.i.i.i.i6177.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_24
+	s_cbranch_execz BB0_24
+BB0_23:                                 ; %if.then.i.i6193.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_24:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE5
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:10
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_26
+BB0_25:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5919.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_26:                                 ; %if.end20.i.i.i.i.i.i5947.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 2, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_28
+BB0_27:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i5978.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_28:                                 ; %if.end20.i.i705.i.i.i.i6008.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_30
+	s_cbranch_execz BB0_30
+BB0_29:                                 ; %if.then.i.i6027.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_30:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE6
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:18
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_32
+BB0_31:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5753.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_32:                                 ; %if.end20.i.i.i.i.i.i5781.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 3, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_34
+BB0_33:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i5812.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_34:                                 ; %if.end20.i.i705.i.i.i.i5842.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_36
+	s_cbranch_execz BB0_36
+BB0_35:                                 ; %if.then.i.i5858.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_36:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE7
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v24, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v24
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:26
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_38
+BB0_37:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5587.i
+	v_add_u32_e32 v24, -1, v24
+	v_add_u32_e32 v15, 1, v14
+BB0_38:                                 ; %if.end20.i.i.i.i.i.i5615.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v25, -7, v18
+	v_cndmask_b32_e32 v18, v25, v18, vcc
+	v_sub_u32_e32 v24, v24, v23
+	v_sub_u32_e32 v18, v18, v20
+	v_add_u32_e32 v25, v24, v16
+	v_add_u32_e32 v26, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v25
+	v_cmp_gt_u32_e64 s[4:5], 17, v26
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v25, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_40
+	s_cbranch_execz BB0_40
+BB0_39:                                 ; %if.then.i.i5692.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_mul_lo_u32 v24, v24, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v15, v15, v17
+	v_add3_u32 v24, v15, v24, v18
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v25, v[24:25]
+BB0_40:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE8
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v25 offset:4
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_42
+BB0_41:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5420.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_42:                                 ; %if.end20.i.i.i.i.i.i5448.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 1, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_44
+BB0_43:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i5479.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_44:                                 ; %if.end20.i.i705.i.i.i.i5509.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_46
+	s_cbranch_execz BB0_46
+BB0_45:                                 ; %if.then.i.i5526.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_46:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE9
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:12
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_48
+BB0_47:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5254.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_48:                                 ; %if.end20.i.i.i.i.i.i5282.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 2, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_50
+BB0_49:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i5313.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_50:                                 ; %if.end20.i.i705.i.i.i.i5343.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_52
+	s_cbranch_execz BB0_52
+BB0_51:                                 ; %if.then.i.i5359.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_52:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE10
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:20
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_54
+BB0_53:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i5088.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_54:                                 ; %if.end20.i.i.i.i.i.i5116.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 3, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_56
+BB0_55:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i5147.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_56:                                 ; %if.end20.i.i705.i.i.i.i5177.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_58
+	s_cbranch_execz BB0_58
+BB0_57:                                 ; %if.then.i.i5193.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_58:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE11
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v24, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v24
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:28
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_60
+BB0_59:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i4922.i
+	v_add_u32_e32 v24, -1, v24
+	v_add_u32_e32 v15, 1, v14
+BB0_60:                                 ; %if.end20.i.i.i.i.i.i4950.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v25, -7, v18
+	v_cndmask_b32_e32 v18, v25, v18, vcc
+	v_sub_u32_e32 v24, v24, v23
+	v_sub_u32_e32 v18, v18, v20
+	v_add_u32_e32 v25, v24, v16
+	v_add_u32_e32 v26, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v25
+	v_cmp_gt_u32_e64 s[4:5], 17, v26
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v25, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_62
+	s_cbranch_execz BB0_62
+BB0_61:                                 ; %if.then.i.i5027.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_mul_lo_u32 v24, v24, 17
+	v_mov_b32_e32 v26, s17
+	v_add_u32_e32 v15, v15, v17
+	v_add3_u32 v24, v15, v24, v18
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v26, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v25, v[24:25]
+BB0_62:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE12
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v25 offset:6
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_64
+BB0_63:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i4756.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_64:                                 ; %if.end20.i.i.i.i.i.i4784.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 1, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_66
+BB0_65:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i4815.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_66:                                 ; %if.end20.i.i705.i.i.i.i4845.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_68
+	s_cbranch_execz BB0_68
+BB0_67:                                 ; %if.then.i.i4861.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_68:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE13
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:14
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_70
+BB0_69:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i4590.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_70:                                 ; %if.end20.i.i.i.i.i.i4618.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 2, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_72
+BB0_71:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i4649.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_72:                                 ; %if.end20.i.i705.i.i.i.i4679.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[8:9], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[8:9]
+	; mask branch BB0_74
+	s_cbranch_execz BB0_74
+BB0_73:                                 ; %if.then.i.i4695.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s8, 0x121
+	v_mul_lo_u32 v15, v15, s8
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s8, 0x9080
+	v_mul_lo_u32 v18, v18, s8
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_74:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE14
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v24, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v24
+	v_addc_co_u32_e64 v25, s[4:5], 0, v23, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v24
+	v_cmp_lt_i32_e64 s[4:5], 0, v25
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:22
+	s_and_saveexec_b64 s[8:9], s[4:5]
+	; mask branch BB0_76
+BB0_75:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i4424.i
+	v_add_u32_e32 v25, -1, v25
+	v_add_u32_e32 v15, 1, v14
+BB0_76:                                 ; %if.end20.i.i.i.i.i.i4452.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v26, 3, v9
+	v_cmp_lt_i32_e64 s[8:9], 16, v26
+	v_addc_co_u32_e64 v27, s[8:9], 0, v8, s[8:9]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cmp_lt_i32_e64 s[8:9], 16, v27
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[12:13], s[8:9]
+	; mask branch BB0_78
+BB0_77:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i4483.i
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v18, 1, v7
+BB0_78:                                 ; %if.end20.i.i705.i.i.i.i4513.i
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v28, -7, v24
+	v_cndmask_b32_e32 v24, v28, v24, vcc
+	v_subrev_u32_e32 v28, 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	s_load_dwordx2 s[18:19], s[6:7], 0x10
+	v_sub_u32_e32 v25, v25, v23
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v24, v24, v20
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v25, v27, v25
+	v_add_u32_e32 v24, v26, v24
+	v_add_u32_e32 v26, v25, v16
+	v_add_u32_e32 v27, v24, v19
+	v_cmp_gt_u32_e32 vcc, 17, v26
+	v_cmp_gt_u32_e64 s[4:5], 17, v27
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v26, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_80
+	s_cbranch_execz BB0_80
+BB0_79:                                 ; %if.then.i.i4529.i
+	v_sub_u32_e32 v15, v15, v14
+	s_movk_i32 s6, 0x121
+	v_mul_lo_u32 v15, v15, s6
+	v_sub_u32_e32 v18, v18, v7
+	s_mov_b32 s6, 0x9080
+	v_mul_lo_u32 v18, v18, s6
+	v_mul_lo_u32 v25, v25, 17
+	v_add3_u32 v15, v15, v17, v18
+	v_add3_u32 v24, v15, v25, v24
+	v_ashrrev_i32_e32 v25, 31, v24
+	v_lshlrev_b64 v[24:25], 1, v[24:25]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v24, vcc, s16, v24
+	v_addc_co_u32_e32 v25, vcc, v15, v25, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v26, v[24:25]
+BB0_80:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE15
+	s_or_b64 exec, exec, s[4:5]
+	v_mov_b32_e32 v37, v23
+	s_movk_i32 s4, 0x1000
+	s_movk_i32 s5, 0x400
+	v_mov_b32_e32 v18, s11
+	v_mov_b32_e32 v15, 16
+	v_accvgpr_write_b32 a0, 0
+	s_movk_i32 s6, 0x1800
+	v_accvgpr_write_b32 a1, 0
+	v_accvgpr_write_b32 a2, 0
+	v_accvgpr_write_b32 a3, 0
+	v_accvgpr_write_b32 a4, 0
+	v_accvgpr_write_b32 a5, 0
+	v_accvgpr_write_b32 a6, 0
+	v_accvgpr_write_b32 a7, 0
+	v_accvgpr_write_b32 a8, 0
+	v_accvgpr_write_b32 a9, 0
+	v_accvgpr_write_b32 a10, 0
+	v_accvgpr_write_b32 a11, 0
+	v_accvgpr_write_b32 a12, 0
+	v_accvgpr_write_b32 a13, 0
+	v_accvgpr_write_b32 a14, 0
+	v_accvgpr_write_b32 a15, 0
+	v_accvgpr_write_b32 a16, 0
+	v_accvgpr_write_b32 a17, 0
+	v_accvgpr_write_b32 a18, 0
+	v_accvgpr_write_b32 a19, 0
+	v_accvgpr_write_b32 a20, 0
+	v_accvgpr_write_b32 a21, 0
+	v_accvgpr_write_b32 a22, 0
+	v_accvgpr_write_b32 a23, 0
+	v_accvgpr_write_b32 a24, 0
+	v_accvgpr_write_b32 a25, 0
+	v_accvgpr_write_b32 a26, 0
+	v_accvgpr_write_b32 a27, 0
+	v_accvgpr_write_b32 a28, 0
+	v_accvgpr_write_b32 a29, 0
+	v_accvgpr_write_b32 a30, 0
+	v_accvgpr_write_b32 a31, 0
+	s_movk_i32 s20, 0x121
+	s_mov_b32 s21, 0x9080
+	s_mov_b32 s22, 8
+	s_movk_i32 s23, 0xffef
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[1:2], v26 offset:30
+	buffer_load_dword v24, off, s[0:3], s24 offset:16
+	buffer_load_dword v25, off, s[0:3], s24 offset:20
+	buffer_load_dword v30, off, s[0:3], s24 offset:40
+	buffer_load_dword v31, off, s[0:3], s24 offset:44
+	v_lshlrev_b32_e32 v1, 4, v22
+	v_lshlrev_b64 v[22:23], 1, v[10:11]
+	v_lshl_add_u32 v2, v12, 8, v13
+	v_add_lshl_u32 v11, v2, v1, 1
+	v_add_co_u32_e32 v22, vcc, s10, v22
+	v_lshl_add_u32 v10, v21, 1, s5
+	v_add_u32_e32 v21, s4, v11
+	v_add_u32_e32 v32, 0x1010, v11
+	v_lshlrev_b32_e32 v12, 3, v0
+	v_addc_co_u32_e32 v18, vcc, v23, v18, vcc
+	v_add_co_u32_e32 v22, vcc, 40, v22
+	v_or_b32_e32 v13, s4, v12
+	v_addc_co_u32_e32 v23, vcc, 0, v18, vcc
+	v_cmp_ne_u32_e32 vcc, 0, v15
+	v_or_b32_e32 v1, s5, v12
+	v_or_b32_e32 v2, s6, v12
+	v_add_u32_e32 v11, s6, v11
+	s_nop 0
+	s_nop 0
+	buffer_load_dword v26, off, s[0:3], s24 offset:24
+	buffer_load_dword v27, off, s[0:3], s24 offset:28
+	buffer_load_dword v28, off, s[0:3], s24 offset:32
+	buffer_load_dword v29, off, s[0:3], s24 offset:36
+	s_waitcnt vmcnt(0)
+	ds_write2_b64 v21, v[24:25], v[26:27] offset1:1
+	ds_write2_b64 v32, v[28:29], v[30:31] offset1:1
+	s_getreg_b32 s4, hwreg(HW_REG_SH_MEM_BASES, 0, 16)
+	s_lshl_b32 s4, s4, 16
+	v_mov_b32_e32 v18, s4
+	v_cndmask_b32_e32 v25, 0, v18, vcc
+	v_cndmask_b32_e32 v24, 0, v15, vcc
+	s_branch BB0_82
+BB0_81:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE41
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[12:13]
+	v_mov_b32_e32 v58, 0xffff
+	v_add_co_u32_e64 v22, s[10:11], 64, v22
+	v_mov_b32_e32 v37, v35
+	v_add_u32_e32 v5, 32, v5
+	v_bfi_b32 v32, v58, v32, v32
+	v_bfi_b32 v31, v58, v31, v31
+	v_bfi_b32 v33, v58, v33, v33
+	v_bfi_b32 v34, v58, v34, v34
+	v_addc_co_u32_e64 v23, s[10:11], 0, v23, s[10:11]
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v41 offset:30
+	ds_read2_b64 v[40:43], v1 offset1:32
+	ds_read2st64_b64 v[44:47], v2 offset1:1
+	ds_read2st64_b64 v[48:51], v2 offset0:2 offset1:3
+	ds_read2_b64 v[52:55], v1 offset0:64 offset1:96
+	s_nop 0
+	s_nop 0
+	buffer_load_dword v56, off, s[0:3], s24 offset:16
+	buffer_load_dword v57, off, s[0:3], s24 offset:20
+	s_waitcnt lgkmcnt(0)
+	v_mfma_f32_32x32x4f16 a[0:31], v[40:41], v[44:45], a[0:31] cbsz:1
+	s_add_i32 s22, s22, 8
+	s_cmpk_lt_u32 s22, 0xe0
+	s_nop 0
+	s_nop 0
+	buffer_load_dword v44, off, s[0:3], s24 offset:40
+	buffer_load_dword v40, off, s[0:3], s24 offset:24
+	buffer_load_dword v45, off, s[0:3], s24 offset:44
+	v_mfma_f32_32x32x4f16 a[0:31], v[42:43], v[46:47], a[0:31] cbsz:1
+	s_nop 0
+	s_nop 0
+	buffer_load_dword v41, off, s[0:3], s24 offset:28
+	buffer_load_dword v42, off, s[0:3], s24 offset:32
+	buffer_load_dword v43, off, s[0:3], s24 offset:36
+	ds_write2_b64 v6, v[31:32], v[33:34] offset1:32
+	v_mfma_f32_32x32x4f16 a[0:31], v[52:53], v[48:49], a[0:31] cbsz:1
+	v_mfma_f32_32x32x4f16 a[0:31], v[54:55], v[50:51], a[0:31] cbsz:1
+	s_waitcnt vmcnt(0)
+	ds_write2_b64 v21, v[56:57], v[40:41] offset1:1
+	ds_write2_b64 v21, v[42:43], v[44:45] offset0:2 offset1:3
+	s_cbranch_scc0 BB0_220
+BB0_82:                                 ; %if.then.i29.i.i.i.i.i.i.i.i10313.i
+                                        ; =>This Inner Loop Header: Depth=1
+	v_add_u32_e32 v18, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v26, s[4:5], 0, v37, s[4:5]
+	v_add_u32_e32 v15, 2, v14
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v26
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_84
+BB0_83:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i4234.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v26, -1, v26
+	v_add_u32_e32 v15, 1, v15
+BB0_84:                                 ; %if.end20.i.i.i.i.i4259.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	s_waitcnt lgkmcnt(0)
+	; wave barrier
+	s_waitcnt lgkmcnt(0)
+	v_add_u32_e32 v27, -7, v18
+	v_sub_u32_e32 v32, v26, v37
+	v_sub_u32_e32 v15, v15, v14
+	v_cndmask_b32_e32 v18, v27, v18, vcc
+	v_mul_lo_u32 v26, v15, s20
+	v_mul_lo_u32 v27, v32, 17
+	v_sub_u32_e32 v33, v18, v20
+	v_add_u32_e32 v18, v19, v33
+	v_add_u32_e32 v16, v16, v32
+	v_add_u32_e32 v19, v26, v27
+	v_cmp_gt_u32_e32 vcc, 17, v16
+	v_cmp_gt_u32_e64 s[4:5], 17, v18
+	v_add3_u32 v26, v19, v33, v17
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v17, 0
+	s_nop 0
+	s_nop 0
+	global_load_dwordx4 v[28:31], v[22:23], off offset:-8
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_86
+	s_cbranch_execz BB0_86
+BB0_85:                                 ; %if.then.i.i4193.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[34:35], 1, v[26:27]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v34, vcc, s16, v34
+	v_addc_co_u32_e32 v35, vcc, v17, v35, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v17, v[34:35]
+BB0_86:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE16
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_mov_b32_e32 v19, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v17
+	v_add_u32_e32 v17, 1, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v17
+	v_addc_co_u32_e64 v27, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v17
+	v_cmp_lt_i32_e64 s[4:5], 16, v27
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_88
+BB0_87:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i3981.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v19, 1, v7
+BB0_88:                                 ; %if.end20.i.i705.i.i.i.i4011.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v34, 17, v17
+	v_cndmask_b32_e32 v17, v34, v17, vcc
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v17, v17, v9
+	v_add_u32_e32 v34, v27, v16
+	v_add_u32_e32 v35, v17, v18
+	v_cmp_gt_u32_e32 vcc, 17, v34
+	v_cmp_gt_u32_e64 s[4:5], 17, v35
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v34, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_90
+	s_cbranch_execz BB0_90
+BB0_89:                                 ; %if.then.i.i4027.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v19, v19, v7
+	v_mul_lo_u32 v19, v19, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v36, s17
+	v_add_u32_e32 v19, v26, v19
+	v_add3_u32 v34, v19, v27, v17
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	v_add_co_u32_e32 v34, vcc, s16, v34
+	v_addc_co_u32_e32 v35, vcc, v36, v35, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v34, v[34:35]
+BB0_90:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE17
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 2, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v19
+	v_addc_co_u32_e64 v27, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v19
+	v_cmp_lt_i32_e64 s[4:5], 16, v27
+	v_mov_b32_e32 v17, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v34 offset:8
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_92
+BB0_91:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i3815.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v17, 1, v7
+BB0_92:                                 ; %if.end20.i.i705.i.i.i.i3845.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v34, 17, v19
+	v_cndmask_b32_e32 v19, v34, v19, vcc
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v19, v19, v9
+	v_add_u32_e32 v34, v27, v16
+	v_add_u32_e32 v35, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v34
+	v_cmp_gt_u32_e64 s[4:5], 17, v35
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v34, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_94
+	s_cbranch_execz BB0_94
+BB0_93:                                 ; %if.then.i.i3861.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v7
+	v_mul_lo_u32 v17, v17, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v36, s17
+	v_add_u32_e32 v17, v26, v17
+	v_add3_u32 v34, v17, v27, v19
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	v_add_co_u32_e32 v34, vcc, s16, v34
+	v_addc_co_u32_e32 v35, vcc, v36, v35, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v34, v[34:35]
+BB0_94:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE18
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 3, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v19
+	v_addc_co_u32_e64 v27, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v19
+	v_cmp_lt_i32_e64 s[4:5], 16, v27
+	v_mov_b32_e32 v17, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v34 offset:16
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_96
+BB0_95:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i3649.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v27, 17, v27
+	v_add_u32_e32 v17, 1, v7
+BB0_96:                                 ; %if.end20.i.i705.i.i.i.i3679.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v34, 17, v19
+	v_cndmask_b32_e32 v19, v34, v19, vcc
+	v_sub_u32_e32 v27, v27, v8
+	v_sub_u32_e32 v19, v19, v9
+	v_add_u32_e32 v34, v27, v16
+	v_add_u32_e32 v35, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v34
+	v_cmp_gt_u32_e64 s[4:5], 17, v35
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v34, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_98
+	s_cbranch_execz BB0_98
+BB0_97:                                 ; %if.then.i.i3695.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v7
+	v_mul_lo_u32 v17, v17, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v36, s17
+	v_add_u32_e32 v17, v26, v17
+	v_add3_u32 v34, v17, v27, v19
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	v_add_co_u32_e32 v34, vcc, s16, v34
+	v_addc_co_u32_e32 v35, vcc, v36, v35, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v34, v[34:35]
+BB0_98:                                 ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE19
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v20, v33, v20
+	v_add_u32_e32 v19, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v27, s[4:5], v32, v37, s[4:5]
+	v_add_u32_e32 v14, v15, v14
+	v_add_u32_e32 v15, v32, v37
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v34 offset:24
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_100
+BB0_99:                                 ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i3424.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v17, 1, v14
+BB0_100:                                ; %if.end20.i.i.i.i.i.i3452.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v32, -7, v19
+	v_cndmask_b32_e32 v19, v32, v19, vcc
+	v_sub_u32_e32 v27, v27, v15
+	v_sub_u32_e32 v19, v19, v20
+	v_add_u32_e32 v32, v27, v16
+	v_add_u32_e32 v33, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v32
+	v_cmp_gt_u32_e64 s[4:5], 17, v33
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v32, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_102
+	s_cbranch_execz BB0_102
+BB0_101:                                ; %if.then.i.i3529.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v34, s17
+	v_add_u32_e32 v17, v17, v26
+	v_add3_u32 v32, v17, v27, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v34, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v32, v[32:33]
+BB0_102:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE20
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v32 offset:2
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_104
+BB0_103:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i3258.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_104:                                ; %if.end20.i.i.i.i.i.i3286.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 1, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_106
+BB0_105:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i3317.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_106:                                ; %if.end20.i.i705.i.i.i.i3347.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_108
+	s_cbranch_execz BB0_108
+BB0_107:                                ; %if.then.i.i3363.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_108:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE21
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:10
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_110
+BB0_109:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i3092.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_110:                                ; %if.end20.i.i.i.i.i.i3120.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 2, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_112
+BB0_111:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i3151.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_112:                                ; %if.end20.i.i705.i.i.i.i3181.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_114
+	s_cbranch_execz BB0_114
+BB0_113:                                ; %if.then.i.i3197.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_114:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE22
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:18
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_116
+BB0_115:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2926.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_116:                                ; %if.end20.i.i.i.i.i.i2954.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 3, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_118
+BB0_117:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i2985.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_118:                                ; %if.end20.i.i705.i.i.i.i3015.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_120
+	s_cbranch_execz BB0_120
+BB0_119:                                ; %if.then.i.i3031.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_120:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE23
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v27, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:26
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_122
+BB0_121:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2760.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v17, 1, v14
+BB0_122:                                ; %if.end20.i.i.i.i.i.i2788.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v32, -7, v19
+	v_cndmask_b32_e32 v19, v32, v19, vcc
+	v_sub_u32_e32 v27, v27, v15
+	v_sub_u32_e32 v19, v19, v20
+	v_add_u32_e32 v32, v27, v16
+	v_add_u32_e32 v33, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v32
+	v_cmp_gt_u32_e64 s[4:5], 17, v33
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v32, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_124
+	s_cbranch_execz BB0_124
+BB0_123:                                ; %if.then.i.i2865.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v34, s17
+	v_add_u32_e32 v17, v17, v26
+	v_add3_u32 v32, v17, v27, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v34, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v32, v[32:33]
+BB0_124:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE24
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v32 offset:4
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_126
+BB0_125:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2594.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_126:                                ; %if.end20.i.i.i.i.i.i2622.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 1, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_128
+BB0_127:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i2653.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_128:                                ; %if.end20.i.i705.i.i.i.i2683.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_130
+	s_cbranch_execz BB0_130
+BB0_129:                                ; %if.then.i.i2699.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_130:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE25
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:12
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_132
+BB0_131:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2428.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_132:                                ; %if.end20.i.i.i.i.i.i2456.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 2, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_134
+BB0_133:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i2487.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_134:                                ; %if.end20.i.i705.i.i.i.i2517.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_136
+	s_cbranch_execz BB0_136
+BB0_135:                                ; %if.then.i.i2533.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_136:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE26
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:20
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_138
+BB0_137:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2262.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_138:                                ; %if.end20.i.i.i.i.i.i2290.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 3, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_140
+BB0_139:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i2321.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_140:                                ; %if.end20.i.i705.i.i.i.i2351.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_142
+	s_cbranch_execz BB0_142
+BB0_141:                                ; %if.then.i.i2367.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_142:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE27
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v27, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:28
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_144
+BB0_143:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i2096.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v17, 1, v14
+BB0_144:                                ; %if.end20.i.i.i.i.i.i2124.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v32, -7, v19
+	v_cndmask_b32_e32 v19, v32, v19, vcc
+	v_sub_u32_e32 v27, v27, v15
+	v_sub_u32_e32 v19, v19, v20
+	v_add_u32_e32 v32, v27, v16
+	v_add_u32_e32 v33, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v32
+	v_cmp_gt_u32_e64 s[4:5], 17, v33
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v32, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_146
+	s_cbranch_execz BB0_146
+BB0_145:                                ; %if.then.i.i2201.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, 17
+	v_mov_b32_e32 v34, s17
+	v_add_u32_e32 v17, v17, v26
+	v_add3_u32 v32, v17, v27, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v34, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v32, v[32:33]
+BB0_146:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE28
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v32 offset:6
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_148
+BB0_147:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i1930.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_148:                                ; %if.end20.i.i.i.i.i.i1958.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 1, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_150
+BB0_149:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i1989.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_150:                                ; %if.end20.i.i705.i.i.i.i2019.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_152
+	s_cbranch_execz BB0_152
+BB0_151:                                ; %if.then.i.i2035.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_152:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE29
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:14
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_154
+BB0_153:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i1764.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_154:                                ; %if.end20.i.i.i.i.i.i1792.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 2, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_156
+BB0_155:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i1823.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_156:                                ; %if.end20.i.i705.i.i.i.i1853.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_158
+	s_cbranch_execz BB0_158
+BB0_157:                                ; %if.then.i.i1869.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_158:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE30
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v19, 3, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v19
+	v_addc_co_u32_e64 v32, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v19
+	v_cmp_lt_i32_e64 s[4:5], 0, v32
+	v_mov_b32_e32 v17, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:22
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_160
+BB0_159:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i1598.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v32, -1, v32
+	v_add_u32_e32 v17, 1, v14
+BB0_160:                                ; %if.end20.i.i.i.i.i.i1626.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v33, 3, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v33
+	v_addc_co_u32_e64 v34, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v33
+	v_cmp_lt_i32_e64 s[6:7], 16, v34
+	v_mov_b32_e32 v27, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_162
+BB0_161:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i1657.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v34, 17, v34
+	v_add_u32_e32 v27, 1, v7
+BB0_162:                                ; %if.end20.i.i705.i.i.i.i1687.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v35, -7, v19
+	v_cndmask_b32_e32 v19, v35, v19, vcc
+	v_subrev_u32_e32 v35, 17, v33
+	v_cndmask_b32_e64 v33, v35, v33, s[4:5]
+	v_sub_u32_e32 v32, v32, v15
+	v_sub_u32_e32 v34, v34, v8
+	v_sub_u32_e32 v19, v19, v20
+	v_sub_u32_e32 v33, v33, v9
+	v_add_u32_e32 v32, v34, v32
+	v_add_u32_e32 v19, v33, v19
+	v_add_u32_e32 v33, v32, v16
+	v_add_u32_e32 v34, v19, v18
+	v_cmp_gt_u32_e32 vcc, 17, v33
+	v_cmp_gt_u32_e64 s[4:5], 17, v34
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v33, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_164
+	s_cbranch_execz BB0_164
+BB0_163:                                ; %if.then.i.i1703.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v17, v17, v14
+	v_sub_u32_e32 v27, v27, v7
+	v_mul_lo_u32 v17, v17, s20
+	v_mul_lo_u32 v27, v27, s21
+	v_mul_lo_u32 v32, v32, 17
+	v_add3_u32 v17, v17, v26, v27
+	v_add3_u32 v32, v17, v32, v19
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	v_mov_b32_e32 v17, s17
+	v_add_co_u32_e32 v32, vcc, s16, v32
+	v_addc_co_u32_e32 v33, vcc, v17, v33, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v33, v[32:33]
+BB0_164:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE31
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v17, 2, v20
+	v_mov_b32_e32 v19, 0xffff
+	v_cmp_lt_i32_e64 s[4:5], 6, v17
+	v_bfi_b32 v27, v19, v28, v28
+	v_bfi_b32 v28, v19, v29, v29
+	v_bfi_b32 v29, v19, v30, v30
+	v_bfi_b32 v30, v19, v31, v31
+	v_addc_co_u32_e64 v19, s[4:5], 0, v15, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v17
+	v_cmp_lt_i32_e64 s[4:5], 0, v19
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v33 offset:30
+	buffer_load_dword v48, off, s[0:3], s24 offset:16
+	buffer_load_dword v49, off, s[0:3], s24 offset:20
+	buffer_load_dword v50, off, s[0:3], s24 offset:24
+	buffer_load_dword v51, off, s[0:3], s24 offset:28
+	buffer_load_dword v52, off, s[0:3], s24 offset:32
+	buffer_load_dword v53, off, s[0:3], s24 offset:36
+	buffer_load_dword v54, off, s[0:3], s24 offset:40
+	buffer_load_dword v55, off, s[0:3], s24 offset:44
+	ds_read2_b64 v[32:35], v12 offset1:32
+	ds_read2st64_b64 v[36:39], v13 offset1:1
+	ds_read2st64_b64 v[40:43], v13 offset0:2 offset1:3
+	ds_read2_b64 v[44:47], v12 offset0:64 offset1:96
+	ds_write2_b64 v10, v[27:28], v[29:30] offset1:32
+	v_add_u32_e32 v27, 2, v14
+	s_waitcnt lgkmcnt(0)
+	v_mfma_f32_32x32x4f16 a[0:31], v[32:33], v[36:37], a[0:31] cbsz:1
+	v_mfma_f32_32x32x4f16 a[0:31], v[34:35], v[38:39], a[0:31] cbsz:1
+	v_mfma_f32_32x32x4f16 a[0:31], v[44:45], v[40:41], a[0:31] cbsz:1
+	v_mfma_f32_32x32x4f16 a[0:31], v[46:47], v[42:43], a[0:31] cbsz:1
+	s_waitcnt vmcnt(0)
+	ds_write2_b64 v11, v[48:49], v[50:51] offset1:1
+	ds_write2_b64 v11, v[52:53], v[54:55] offset0:2 offset1:3
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_166
+BB0_165:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v19, -1, v19
+	v_add_u32_e32 v27, 1, v27
+BB0_166:                                ; %if.end20.i.i.i.i.i.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v28, -7, v17
+	v_cndmask_b32_e32 v17, v28, v17, vcc
+	v_sub_u32_e32 v28, v27, v14
+	v_sub_u32_e32 v27, v19, v15
+	v_mul_lo_u32 v30, v28, s20
+	v_mul_lo_u32 v31, v27, 17
+	v_sub_u32_e32 v29, v17, v20
+	s_waitcnt lgkmcnt(0)
+	; wave barrier
+	v_add_u32_e32 v17, v30, v31
+	s_waitcnt lgkmcnt(0)
+	v_add_u32_e32 v19, v18, v29
+	v_add_u32_e32 v16, v16, v27
+	v_cmp_gt_u32_e32 vcc, 17, v16
+	v_cmp_gt_u32_e64 s[4:5], 17, v19
+	v_add3_u32 v17, v17, v29, v26
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v18, 0
+	s_nop 0
+	s_nop 0
+	global_load_dwordx4 v[31:34], v[22:23], off offset:24
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_168
+	s_cbranch_execz BB0_168
+BB0_167:                                ; %if.then.i.i1500.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_ashrrev_i32_e32 v18, 31, v17
+	v_lshlrev_b64 v[35:36], 1, v[17:18]
+	v_mov_b32_e32 v18, s17
+	v_add_co_u32_e32 v35, vcc, s16, v35
+	v_addc_co_u32_e32 v36, vcc, v18, v36, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v18, v[35:36]
+BB0_168:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE32
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v26, 1, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v26
+	v_addc_co_u32_e64 v30, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v26
+	v_cmp_lt_i32_e64 s[4:5], 16, v30
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v18
+	v_mov_b32_e32 v18, v7
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_170
+BB0_169:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i1288.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v30, 17, v30
+	v_add_u32_e32 v18, 1, v7
+BB0_170:                                ; %if.end20.i.i705.i.i.i.i1318.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v35, 17, v26
+	v_cndmask_b32_e32 v26, v35, v26, vcc
+	v_sub_u32_e32 v30, v30, v8
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v35, v30, v16
+	v_add_u32_e32 v36, v26, v19
+	v_cmp_gt_u32_e32 vcc, 17, v35
+	v_cmp_gt_u32_e64 s[4:5], 17, v36
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v35, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_172
+	s_cbranch_execz BB0_172
+BB0_171:                                ; %if.then.i.i1334.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v18, v18, v7
+	v_mul_lo_u32 v18, v18, s21
+	v_mul_lo_u32 v30, v30, 17
+	v_mov_b32_e32 v37, s17
+	v_add_u32_e32 v18, v17, v18
+	v_add3_u32 v35, v18, v30, v26
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	v_add_co_u32_e32 v35, vcc, s16, v35
+	v_addc_co_u32_e32 v36, vcc, v37, v36, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v35, v[35:36]
+BB0_172:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE33
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v26, 2, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v26
+	v_addc_co_u32_e64 v30, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v26
+	v_cmp_lt_i32_e64 s[4:5], 16, v30
+	v_mov_b32_e32 v18, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v35 offset:8
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_174
+BB0_173:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i1122.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v30, 17, v30
+	v_add_u32_e32 v18, 1, v7
+BB0_174:                                ; %if.end20.i.i705.i.i.i.i1152.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v35, 17, v26
+	v_cndmask_b32_e32 v26, v35, v26, vcc
+	v_sub_u32_e32 v30, v30, v8
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v35, v30, v16
+	v_add_u32_e32 v36, v26, v19
+	v_cmp_gt_u32_e32 vcc, 17, v35
+	v_cmp_gt_u32_e64 s[4:5], 17, v36
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v35, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_176
+	s_cbranch_execz BB0_176
+BB0_175:                                ; %if.then.i.i1168.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v18, v18, v7
+	v_mul_lo_u32 v18, v18, s21
+	v_mul_lo_u32 v30, v30, 17
+	v_mov_b32_e32 v37, s17
+	v_add_u32_e32 v18, v17, v18
+	v_add3_u32 v35, v18, v30, v26
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	v_add_co_u32_e32 v35, vcc, s16, v35
+	v_addc_co_u32_e32 v36, vcc, v37, v36, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v35, v[35:36]
+BB0_176:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE34
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v26, 3, v9
+	v_cmp_lt_i32_e64 s[4:5], 16, v26
+	v_addc_co_u32_e64 v30, s[4:5], 0, v8, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 17, v26
+	v_cmp_lt_i32_e64 s[4:5], 16, v30
+	v_mov_b32_e32 v18, v7
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v35 offset:16
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_178
+BB0_177:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i956.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v30, 17, v30
+	v_add_u32_e32 v18, 1, v7
+BB0_178:                                ; %if.end20.i.i705.i.i.i.i986.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_subrev_u32_e32 v35, 17, v26
+	v_cndmask_b32_e32 v26, v35, v26, vcc
+	v_sub_u32_e32 v30, v30, v8
+	v_sub_u32_e32 v26, v26, v9
+	v_add_u32_e32 v35, v30, v16
+	v_add_u32_e32 v36, v26, v19
+	v_cmp_gt_u32_e64 s[4:5], 17, v36
+	v_cmp_gt_u32_e32 vcc, 17, v35
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v36, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_180
+	s_cbranch_execz BB0_180
+BB0_179:                                ; %if.then.i.i1002.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v18, v18, v7
+	v_mul_lo_u32 v18, v18, s21
+	v_mul_lo_u32 v30, v30, 17
+	v_mov_b32_e32 v37, s17
+	v_add_u32_e32 v18, v17, v18
+	v_add3_u32 v35, v18, v30, v26
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	v_add_co_u32_e32 v35, vcc, s16, v35
+	v_addc_co_u32_e32 v36, vcc, v37, v36, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v36, v[35:36]
+BB0_180:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE35
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v20, v29, v20
+	v_add_u32_e32 v18, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_add_u32_e32 v35, v27, v15
+	v_addc_co_u32_e64 v15, s[4:5], v27, v15, s[4:5]
+	v_add_u32_e32 v14, v28, v14
+	v_mov_b32_e32 v27, v15
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v15
+	v_mov_b32_e32 v26, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v36 offset:24
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_182
+BB0_181:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i731.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v15
+	v_add_u32_e32 v26, 1, v14
+BB0_182:                                ; %if.end20.i.i.i.i.i.i759.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v15, -7, v18
+	v_cndmask_b32_e32 v15, v15, v18, vcc
+	v_sub_u32_e32 v18, v27, v35
+	v_sub_u32_e32 v15, v15, v20
+	v_add_u32_e32 v27, v18, v16
+	v_add_u32_e32 v28, v15, v19
+	v_cmp_gt_u32_e32 vcc, 17, v27
+	v_cmp_gt_u32_e64 s[4:5], 17, v28
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v27, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_184
+	s_cbranch_execz BB0_184
+BB0_183:                                ; %if.then.i.i836.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v26, v26, v14
+	v_mul_lo_u32 v26, v26, s20
+	v_mul_lo_u32 v18, v18, 17
+	v_mov_b32_e32 v28, s17
+	v_add_u32_e32 v26, v26, v17
+	v_add3_u32 v26, v26, v18, v15
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_add_co_u32_e32 v26, vcc, s16, v26
+	v_addc_co_u32_e32 v27, vcc, v28, v27, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v27, v[26:27]
+BB0_184:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE36
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v27 offset:2
+	v_addc_co_u32_e64 v27, s[4:5], 0, v35, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_186
+BB0_185:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i565.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v15, 1, v14
+BB0_186:                                ; %if.end20.i.i.i.i.i.i593.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v28, 1, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v28
+	v_addc_co_u32_e64 v29, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v28
+	v_cmp_lt_i32_e64 s[6:7], 16, v29
+	v_mov_b32_e32 v26, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_188
+BB0_187:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i624.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v29, 17, v29
+	v_add_u32_e32 v26, 1, v7
+BB0_188:                                ; %if.end20.i.i705.i.i.i.i654.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v30, -7, v18
+	v_cndmask_b32_e32 v18, v30, v18, vcc
+	v_subrev_u32_e32 v30, 17, v28
+	v_cndmask_b32_e64 v28, v30, v28, s[4:5]
+	v_sub_u32_e32 v27, v27, v35
+	v_sub_u32_e32 v29, v29, v8
+	v_sub_u32_e32 v18, v18, v20
+	v_sub_u32_e32 v28, v28, v9
+	v_add_u32_e32 v27, v29, v27
+	v_add_u32_e32 v18, v28, v18
+	v_add_u32_e32 v28, v27, v16
+	v_add_u32_e32 v29, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v28
+	v_cmp_gt_u32_e64 s[4:5], 17, v29
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v28, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_190
+	s_cbranch_execz BB0_190
+BB0_189:                                ; %if.then.i.i670.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v15, v15, v14
+	v_sub_u32_e32 v26, v26, v7
+	v_mul_lo_u32 v15, v15, s20
+	v_mul_lo_u32 v26, v26, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_add3_u32 v15, v15, v17, v26
+	v_add3_u32 v26, v15, v27, v18
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v26, vcc, s16, v26
+	v_addc_co_u32_e32 v27, vcc, v15, v27, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v28, v[26:27]
+BB0_190:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE37
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v27, s[4:5], 0, v35, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v28 offset:10
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_192
+BB0_191:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i399.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v15, 1, v14
+BB0_192:                                ; %if.end20.i.i.i.i.i.i427.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v28, 2, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v28
+	v_addc_co_u32_e64 v29, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v28
+	v_cmp_lt_i32_e64 s[6:7], 16, v29
+	v_mov_b32_e32 v26, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_194
+BB0_193:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i458.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v29, 17, v29
+	v_add_u32_e32 v26, 1, v7
+BB0_194:                                ; %if.end20.i.i705.i.i.i.i488.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v30, -7, v18
+	v_cndmask_b32_e32 v18, v30, v18, vcc
+	v_subrev_u32_e32 v30, 17, v28
+	v_cndmask_b32_e64 v28, v30, v28, s[4:5]
+	v_sub_u32_e32 v27, v27, v35
+	v_sub_u32_e32 v29, v29, v8
+	v_sub_u32_e32 v18, v18, v20
+	v_sub_u32_e32 v28, v28, v9
+	v_add_u32_e32 v27, v29, v27
+	v_add_u32_e32 v18, v28, v18
+	v_add_u32_e32 v28, v27, v16
+	v_add_u32_e32 v29, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v28
+	v_cmp_gt_u32_e64 s[4:5], 17, v29
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v28, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_196
+	s_cbranch_execz BB0_196
+BB0_195:                                ; %if.then.i.i504.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v15, v15, v14
+	v_sub_u32_e32 v26, v26, v7
+	v_mul_lo_u32 v15, v15, s20
+	v_mul_lo_u32 v26, v26, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_add3_u32 v15, v15, v17, v26
+	v_add3_u32 v26, v15, v27, v18
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v26, vcc, s16, v26
+	v_addc_co_u32_e32 v27, vcc, v15, v27, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v28, v[26:27]
+BB0_196:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE38
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 1, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v27, s[4:5], 0, v35, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v27
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v28 offset:18
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_198
+BB0_197:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i233.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v27, -1, v27
+	v_add_u32_e32 v15, 1, v14
+BB0_198:                                ; %if.end20.i.i.i.i.i.i261.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v28, 3, v9
+	v_cmp_lt_i32_e64 s[6:7], 16, v28
+	v_addc_co_u32_e64 v29, s[6:7], 0, v8, s[6:7]
+	v_cmp_gt_i32_e64 s[4:5], 17, v28
+	v_cmp_lt_i32_e64 s[6:7], 16, v29
+	v_mov_b32_e32 v26, v7
+	s_and_saveexec_b64 s[8:9], s[6:7]
+	; mask branch BB0_200
+BB0_199:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi17ELi17EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread2008.i.i292.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_subrev_u32_e32 v29, 17, v29
+	v_add_u32_e32 v26, 1, v7
+BB0_200:                                ; %if.end20.i.i705.i.i.i.i322.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v30, -7, v18
+	v_cndmask_b32_e32 v18, v30, v18, vcc
+	v_subrev_u32_e32 v30, 17, v28
+	v_cndmask_b32_e64 v28, v30, v28, s[4:5]
+	v_sub_u32_e32 v27, v27, v35
+	v_sub_u32_e32 v29, v29, v8
+	v_sub_u32_e32 v18, v18, v20
+	v_sub_u32_e32 v28, v28, v9
+	v_add_u32_e32 v27, v29, v27
+	v_add_u32_e32 v18, v28, v18
+	v_add_u32_e32 v28, v27, v16
+	v_add_u32_e32 v29, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v28
+	v_cmp_gt_u32_e64 s[4:5], 17, v29
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v28, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_202
+	s_cbranch_execz BB0_202
+BB0_201:                                ; %if.then.i.i338.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v15, v15, v14
+	v_sub_u32_e32 v26, v26, v7
+	v_mul_lo_u32 v15, v15, s20
+	v_mul_lo_u32 v26, v26, s21
+	v_mul_lo_u32 v27, v27, 17
+	v_add3_u32 v15, v15, v17, v26
+	v_add3_u32 v26, v15, v27, v18
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_mov_b32_e32 v15, s17
+	v_add_co_u32_e32 v26, vcc, s16, v26
+	v_addc_co_u32_e32 v27, vcc, v15, v27, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v28, v[26:27]
+BB0_202:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE39
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v18, 2, v20
+	v_cmp_lt_i32_e64 s[4:5], 6, v18
+	v_addc_co_u32_e64 v26, s[4:5], 0, v35, s[4:5]
+	v_cmp_gt_i32_e32 vcc, 7, v18
+	v_cmp_lt_i32_e64 s[4:5], 0, v26
+	v_mov_b32_e32 v15, v14
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v28 offset:26
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_204
+BB0_203:                                ; %_ZNK2ck10static_forILi2ELi0ELin1EEclIZNS_5MergeINS_8SequenceIJLi128ELi1ELi7EEEEE23CalculateLowerIndexDiffERKNS_5ArrayIiLi1EEESA_RKNS7_IiLi3EEEEUlT_E0_EEvSE_.exit.i.i.i.i.thread1986.i.i67.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_add_u32_e32 v26, -1, v26
+	v_add_u32_e32 v15, 1, v14
+BB0_204:                                ; %if.end20.i.i.i.i.i.i95.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v27, -7, v18
+	v_cndmask_b32_e32 v18, v27, v18, vcc
+	v_sub_u32_e32 v26, v26, v35
+	v_sub_u32_e32 v18, v18, v20
+	v_add_u32_e32 v27, v26, v16
+	v_add_u32_e32 v28, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v27
+	v_cmp_gt_u32_e64 s[4:5], 17, v28
+	s_and_b64 s[6:7], vcc, s[4:5]
+	v_mov_b32_e32 v27, 0
+	s_and_saveexec_b64 s[4:5], s[6:7]
+	; mask branch BB0_206
+	s_cbranch_execz BB0_206
+BB0_205:                                ; %if.then.i.i172.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_sub_u32_e32 v15, v15, v14
+	v_mul_lo_u32 v15, v15, s20
+	v_mul_lo_u32 v26, v26, 17
+	v_mov_b32_e32 v28, s17
+	v_add_u32_e32 v15, v15, v17
+	v_add3_u32 v26, v15, v26, v18
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_add_co_u32_e32 v26, vcc, s16, v26
+	v_addc_co_u32_e32 v27, vcc, v28, v27, vcc
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v27, v[26:27]
+BB0_206:                                ; %_ZNK2ck6detail9ford_implINS_8SequenceIJEEENS2_IJLi0ELi1ELi3ELi2EEEEEclIZNKS_37ThreadwiseGenericTensorSliceCopy_v4r2IKNS_27TransformedTensorDescriptorINS8_INS8_INS8_INS8_INS8_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi36992EEENSA_ILi128ELi289EEENSA_ILi17ELi17EEENSA_ILi17ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEESI_NS_3PadINS2_IJLi17ELi17EEEENS2_IJLi0ELi3EEEESL_Lb0EEEEEENSG_IJNS2_IJLi0EEEENS2_IJLi1EEEENS2_IJLi2ELi3EEEEEEESR_EENSG_IJSI_SI_NS_5EmbedILi17ENS2_IJLi1ELi17EEEENS2_IJLi1ELi1ELi0EEEELb0EEENST_ILi23ENS2_IJLi7ELi17EEEESV_Lb0EEEEEENSG_IJSO_SP_NS2_IJLi2EEEENS2_IJLi3EEEEEEENSG_IJSO_SP_SQ_NS2_IJLi4ELi5EEEEEEEEENSG_IJNS_5MergeINS2_IJLi128ELi1ELi7EEEEEENS16_INS2_IJLi128ELi17ELi17EEEEEEEEENSG_IJNS2_IJLi1ELi2ELi4EEEENS2_IJLi0ELi3ELi5EEEEEEENSG_IJSO_SP_EEEEENSG_IJNS_7UnMergeINS2_IJLi224ELi4EEEEEENSH_ILi36992EEEEEES1F_NSG_IJNS2_IJLi0ELi1EEEES10_EEEEENSG_IJNSH_ILi224EEES1K_NSH_ILi4EEEEEENSG_IJSO_S10_SP_EEENSG_IJSO_SP_S10_EEEEENSG_IJNS1H_INS2_IJLi1ELi224EEEEEES1K_S1Q_EEES1T_NSG_IJS1M_S10_S11_EEEEE40
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[4:5]
+	v_add_u32_e32 v15, 2, v20
+	v_add_u32_e32 v18, -5, v20
+	v_cmp_gt_i32_e32 vcc, 7, v15
+	v_cmp_lt_i32_e64 s[4:5], 6, v15
+	v_cndmask_b32_e32 v30, v18, v15, vcc
+	v_addc_co_u32_e64 v38, vcc, 0, v35, s[4:5]
+	v_add_u32_e32 v15, 1, v9
+	v_add_u32_e32 v18, -16, v9
+	v_cmp_gt_i32_e32 vcc, 17, v15
+	v_cndmask_b32_e32 v18, v18, v15, vcc
+	v_cmp_lt_i32_e32 vcc, 16, v15
+	v_mov_b32_e32 v26, s23
+	v_addc_co_u32_e64 v15, s[6:7], 0, v8, vcc
+	v_addc_co_u32_e32 v26, vcc, v8, v26, vcc
+	v_cmp_gt_i32_e32 vcc, 17, v15
+	v_cndmask_b32_e32 v15, v26, v15, vcc
+	v_cmp_lt_i32_e64 s[6:7], 0, v38
+	v_sub_u32_e32 v36, v30, v20
+	v_sub_u32_e32 v15, v15, v8
+	v_sub_u32_e32 v18, v18, v9
+	v_cndmask_b32_e64 v26, 0, -1, s[6:7]
+	v_cndmask_b32_e64 v39, 0, 1, s[6:7]
+	v_addc_co_u32_e64 v37, s[6:7], 0, v26, s[4:5]
+	v_addc_co_u32_e64 v26, s[4:5], v15, v26, s[4:5]
+	v_add_u32_e32 v28, v26, v16
+	v_cmp_gt_u32_e64 s[4:5], 17, v28
+	v_cmp_gt_i32_e64 s[8:9], 1, v38
+	v_mov_b32_e32 v28, 0
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v27 offset:4
+	v_add_u32_e32 v27, v18, v36
+	v_add_u32_e32 v29, v27, v19
+	v_cmp_gt_u32_e64 s[6:7], 17, v29
+	s_and_b64 s[4:5], s[6:7], s[4:5]
+	s_and_saveexec_b64 s[6:7], s[4:5]
+	; mask branch BB0_208
+	s_cbranch_execz BB0_208
+BB0_207:                                ; %if.then.i.i10485.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v28, s21
+	v_mov_b32_e32 v29, s20
+	v_mul_lo_u32 v26, v26, 17
+	v_cndmask_b32_e64 v28, v28, 0, vcc
+	v_cndmask_b32_e64 v29, v29, 0, s[8:9]
+	v_or_b32_e32 v28, v28, v29
+	v_add_u32_e32 v27, v28, v27
+	v_add3_u32 v26, v27, v26, v17
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	v_mov_b32_e32 v28, s17
+	v_add_co_u32_e64 v26, s[4:5], s16, v26
+	v_addc_co_u32_e64 v27, s[4:5], v28, v27, s[4:5]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v28, v[26:27]
+BB0_208:                                ; %if.then.i29.i.i.i.i.i.i.i.i10069.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[6:7]
+	v_add_u32_e32 v26, 2, v9
+	v_add_u32_e32 v27, -15, v9
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cndmask_b32_e64 v27, v27, v26, s[4:5]
+	v_cmp_lt_i32_e64 s[4:5], 16, v26
+	v_addc_co_u32_e64 v26, s[6:7], 0, v8, s[4:5]
+	v_sub_u32_e32 v27, v27, v9
+	v_add_u32_e32 v29, v27, v36
+	v_add_u32_e32 v41, v29, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v41
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v28 offset:12
+	v_mov_b32_e32 v28, s23
+	v_addc_co_u32_e64 v28, s[4:5], v8, v28, s[4:5]
+	v_cmp_gt_i32_e64 s[4:5], 17, v26
+	v_cndmask_b32_e64 v26, v28, v26, s[4:5]
+	v_sub_u32_e32 v26, v26, v8
+	v_add_u32_e32 v28, v37, v26
+	v_add_u32_e32 v40, v28, v16
+	v_cmp_gt_u32_e64 s[6:7], 17, v40
+	s_and_b64 s[6:7], s[10:11], s[6:7]
+	v_mov_b32_e32 v40, 0
+	s_and_saveexec_b64 s[10:11], s[6:7]
+	; mask branch BB0_210
+	s_cbranch_execz BB0_210
+BB0_209:                                ; %if.then.i.i10241.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v40, s21
+	v_mov_b32_e32 v41, s20
+	v_mul_lo_u32 v28, v28, 17
+	v_cndmask_b32_e64 v40, v40, 0, s[4:5]
+	v_cndmask_b32_e64 v41, v41, 0, s[8:9]
+	v_or_b32_e32 v40, v40, v41
+	v_add_u32_e32 v29, v40, v29
+	v_add3_u32 v28, v29, v28, v17
+	v_ashrrev_i32_e32 v29, 31, v28
+	v_lshlrev_b64 v[28:29], 1, v[28:29]
+	v_mov_b32_e32 v40, s17
+	v_add_co_u32_e64 v28, s[6:7], s16, v28
+	v_addc_co_u32_e64 v29, s[6:7], v40, v29, s[6:7]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v40, v[28:29]
+BB0_210:                                ; %if.then.i29.i.i.i.i.i.i.i.i9825.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[10:11]
+	v_add_u32_e32 v28, 3, v9
+	v_add_u32_e32 v29, -14, v9
+	v_cmp_gt_i32_e64 s[6:7], 17, v28
+	v_cndmask_b32_e64 v29, v29, v28, s[6:7]
+	v_cmp_lt_i32_e64 s[6:7], 16, v28
+	v_addc_co_u32_e64 v28, s[10:11], 0, v8, s[6:7]
+	v_sub_u32_e32 v29, v29, v9
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v40 offset:20
+	v_mov_b32_e32 v40, s23
+	v_addc_co_u32_e64 v40, s[6:7], v8, v40, s[6:7]
+	v_cmp_gt_i32_e64 s[6:7], 17, v28
+	v_cndmask_b32_e64 v28, v40, v28, s[6:7]
+	v_sub_u32_e32 v28, v28, v8
+	v_add_u32_e32 v37, v37, v28
+	v_add_u32_e32 v40, v29, v36
+	v_add_u32_e32 v41, v37, v16
+	v_add_u32_e32 v42, v40, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v41
+	v_cmp_gt_u32_e64 s[12:13], 17, v42
+	s_and_b64 s[10:11], s[12:13], s[10:11]
+	v_mov_b32_e32 v41, 0
+	s_and_saveexec_b64 s[12:13], s[10:11]
+	; mask branch BB0_212
+	s_cbranch_execz BB0_212
+BB0_211:                                ; %if.then.i.i9997.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v41, s21
+	v_mov_b32_e32 v42, s20
+	v_mul_lo_u32 v37, v37, 17
+	v_cndmask_b32_e64 v41, v41, 0, s[6:7]
+	v_cndmask_b32_e64 v42, v42, 0, s[8:9]
+	v_or_b32_e32 v41, v41, v42
+	v_add_u32_e32 v40, v41, v40
+	v_add3_u32 v40, v40, v37, v17
+	v_ashrrev_i32_e32 v41, 31, v40
+	v_lshlrev_b64 v[40:41], 1, v[40:41]
+	v_mov_b32_e32 v37, s17
+	v_add_co_u32_e64 v40, s[10:11], s16, v40
+	v_addc_co_u32_e64 v41, s[10:11], v37, v41, s[10:11]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v41, v[40:41]
+BB0_212:                                ; %if.then.i29.i.i.i.i.i.i.i.i9581.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[12:13]
+	v_add_u32_e32 v37, 3, v20
+	v_add_u32_e32 v40, -4, v20
+	v_cmp_gt_i32_e64 s[10:11], 7, v37
+	v_cndmask_b32_e64 v43, v40, v37, s[10:11]
+	v_cmp_lt_i32_e64 s[10:11], 6, v37
+	v_cndmask_b32_e64 v40, 0, 1, s[10:11]
+	v_addc_co_u32_e64 v37, s[10:11], 0, v35, s[10:11]
+	v_cmp_lt_i32_e64 s[12:13], 0, v37
+	v_cmp_gt_i32_e64 s[10:11], 1, v37
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v41 offset:28
+	v_cndmask_b32_e64 v41, 0, 1, s[12:13]
+	v_subb_co_u32_e64 v42, s[12:13], v37, v35, s[12:13]
+	v_sub_u32_e32 v37, v43, v20
+	v_add_u32_e32 v43, v42, v16
+	v_add_u32_e32 v44, v37, v19
+	v_cmp_gt_u32_e64 s[12:13], 17, v43
+	v_cmp_gt_u32_e64 s[14:15], 17, v44
+	s_and_b64 s[12:13], s[14:15], s[12:13]
+	v_mov_b32_e32 v43, 0
+	s_and_saveexec_b64 s[14:15], s[12:13]
+	; mask branch BB0_214
+	s_cbranch_execz BB0_214
+BB0_213:                                ; %if.then.i.i9753.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mul_lo_u32 v42, v42, 17
+	v_mov_b32_e32 v43, s20
+	v_cndmask_b32_e64 v43, v43, 0, s[10:11]
+	v_add_u32_e32 v43, v43, v37
+	v_add3_u32 v42, v43, v42, v17
+	v_ashrrev_i32_e32 v43, 31, v42
+	v_lshlrev_b64 v[42:43], 1, v[42:43]
+	v_mov_b32_e32 v44, s17
+	v_add_co_u32_e64 v42, s[12:13], s16, v42
+	v_addc_co_u32_e64 v43, s[12:13], v44, v43, s[12:13]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v43, v[42:43]
+BB0_214:                                ; %if.then.i29.i.i.i.i.i.i.i.i9337.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[14:15]
+	v_sub_u32_e32 v40, v40, v41
+	v_add_u32_e32 v42, v18, v37
+	v_add_u32_e32 v41, v40, v15
+	v_add_u32_e32 v44, v42, v19
+	v_cmp_gt_u32_e64 s[14:15], 17, v44
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v43 offset:6
+	v_add_u32_e32 v43, v41, v16
+	v_cmp_gt_u32_e64 s[12:13], 17, v43
+	s_and_b64 s[12:13], s[14:15], s[12:13]
+	v_mov_b32_e32 v43, 0
+	s_and_saveexec_b64 s[14:15], s[12:13]
+	; mask branch BB0_216
+	s_cbranch_execz BB0_216
+BB0_215:                                ; %if.then.i.i9509.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v43, s21
+	v_mov_b32_e32 v44, s20
+	v_mul_lo_u32 v41, v41, 17
+	v_cndmask_b32_e64 v43, v43, 0, vcc
+	v_cndmask_b32_e64 v44, v44, 0, s[10:11]
+	v_or_b32_e32 v43, v43, v44
+	v_add_u32_e32 v42, v43, v42
+	v_add3_u32 v41, v42, v41, v17
+	v_ashrrev_i32_e32 v42, 31, v41
+	v_lshlrev_b64 v[41:42], 1, v[41:42]
+	v_mov_b32_e32 v43, s17
+	v_add_co_u32_e64 v41, s[12:13], s16, v41
+	v_addc_co_u32_e64 v42, s[12:13], v43, v42, s[12:13]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v43, v[41:42]
+BB0_216:                                ; %if.then.i29.i.i.i.i.i.i.i.i9093.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[14:15]
+	v_add_u32_e32 v42, v27, v37
+	v_add_u32_e32 v41, v40, v26
+	v_add_u32_e32 v44, v42, v19
+	v_cmp_gt_u32_e64 s[14:15], 17, v44
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v43 offset:14
+	v_add_u32_e32 v43, v41, v16
+	v_cmp_gt_u32_e64 s[12:13], 17, v43
+	s_and_b64 s[12:13], s[14:15], s[12:13]
+	v_mov_b32_e32 v43, 0
+	s_and_saveexec_b64 s[14:15], s[12:13]
+	; mask branch BB0_218
+	s_cbranch_execz BB0_218
+BB0_217:                                ; %if.then.i.i9265.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v43, s21
+	v_mov_b32_e32 v44, s20
+	v_mul_lo_u32 v41, v41, 17
+	v_cndmask_b32_e64 v43, v43, 0, s[4:5]
+	v_cndmask_b32_e64 v44, v44, 0, s[10:11]
+	v_or_b32_e32 v43, v43, v44
+	v_add_u32_e32 v42, v43, v42
+	v_add3_u32 v41, v42, v41, v17
+	v_ashrrev_i32_e32 v42, 31, v41
+	v_lshlrev_b64 v[41:42], 1, v[41:42]
+	v_mov_b32_e32 v43, s17
+	v_add_co_u32_e64 v41, s[12:13], s16, v41
+	v_addc_co_u32_e64 v42, s[12:13], v43, v42, s[12:13]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v43, v[41:42]
+BB0_218:                                ; %if.then.i29.i.i.i.i.i.i.i.i8849.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	s_or_b64 exec, exec, s[14:15]
+	v_add_u32_e32 v40, v40, v28
+	v_add_u32_e32 v37, v29, v37
+	v_add_u32_e32 v41, v40, v16
+	v_add_u32_e32 v42, v37, v19
+	v_cmp_gt_u32_e64 s[12:13], 17, v41
+	v_cmp_gt_u32_e64 s[14:15], 17, v42
+	s_and_b64 s[14:15], s[14:15], s[12:13]
+	v_mov_b32_e32 v41, 0
+	s_nop 0
+	s_waitcnt vmcnt(0) lgkmcnt(0)
+	s_nop 0
+	flat_store_short v[24:25], v43 offset:22
+	s_and_saveexec_b64 s[12:13], s[14:15]
+	; mask branch BB0_81
+	s_cbranch_execz BB0_81
+BB0_219:                                ; %if.then.i.i9021.i
+                                        ;   in Loop: Header=BB0_82 Depth=1
+	v_mov_b32_e32 v41, s21
+	v_mov_b32_e32 v42, s20
+	v_mul_lo_u32 v40, v40, 17
+	v_cndmask_b32_e64 v41, v41, 0, s[6:7]
+	v_cndmask_b32_e64 v42, v42, 0, s[10:11]
+	v_or_b32_e32 v41, v41, v42
+	v_add_u32_e32 v37, v41, v37
+	v_add3_u32 v40, v37, v40, v17
+	v_ashrrev_i32_e32 v41, 31, v40
+	v_lshlrev_b64 v[40:41], 1, v[40:41]
+	v_mov_b32_e32 v37, s17
+	v_add_co_u32_e64 v40, s[10:11], s16, v40
+	v_addc_co_u32_e64 v41, s[10:11], v37, v41, s[10:11]
+	s_nop 0
+	s_nop 0
+	flat_load_ushort v41, v[40:41]
+	s_branch BB0_81
+BB0_220:                                ; %if.then.i29.i.i.i.i.i.i.i.i
+	v_sub_u32_e32 v21, v38, v39
+	v_sub_u32_e32 v6, v21, v35
+	v_add_u32_e32 v14, v6, v16
+	v_mul_lo_u32 v6, v6, 17
+	v_cndmask_b32_e64 v5, 3, 2, s[8:9]
+	s_movk_i32 s8, 0x121
+	v_mad_u32_u24 v5, v5, s8, v36
+	s_waitcnt lgkmcnt(0)
+	; wave barrier
+	v_add3_u32 v16, v5, v6, v17
+	s_waitcnt lgkmcnt(0)
+	v_add_u32_e32 v19, v19, v36
+	v_cmp_gt_u32_e64 s[8:9], 17, v14
+	v_cmp_gt_u32_e64 s[10:11], 17, v19
+	s_and_b64 s[10:11], s[8:9], s[10:11]
+	s_nop 0
+	s_nop 0
+	global_load_dwordx4 v[5:8], v[22:23], off offset:-8
+	v_mov_b32_e32 v23, 0
+	s_and_saveexec_b64 s[8:9], s[10:11]
+	; mask branch BB0_222
+	s_cbranch_execz BB0_222
+BB0_221:                                ; %if.then.i.i8754.i
+	v_ashrrev_i32_e32 v17, 31, v16
+	v_lshlrev_b64 v[22:23], 1, v[16:17]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v23, v[22:23], s[16:17]
+BB0_222:                                ; %if.then.i29.i.i.i.i609.i.i.i.i8403.i
+	s_or_b64 exec, exec, s[8:9]
+	v_add_u32_e32 v34, v15, v14
+	v_add_u32_e32 v35, v18, v19
+	v_mov_b32_e32 v33, 0xffff
+	v_cmp_gt_u32_e64 s[8:9], 17, v34
+	v_cmp_gt_u32_e64 s[10:11], 17, v35
+	s_and_b64 s[10:11], s[10:11], s[8:9]
+	s_nop 0
+	s_nop 0
+	buffer_load_dword v32, off, s[0:3], s24 offset:48
+	buffer_load_dword v22, off, s[0:3], s24 offset:52
+	buffer_load_dword v31, off, s[0:3], s24 offset:56
+	buffer_load_dword v20, off, s[0:3], s24 offset:60
+	buffer_load_dword v25, off, s[0:3], s24 offset:64
+	buffer_load_dword v17, off, s[0:3], s24 offset:68
+	buffer_load_dword v24, off, s[0:3], s24 offset:72
+	buffer_load_dword v9, off, s[0:3], s24 offset:76
+	s_waitcnt vmcnt(7)
+	v_bfi_b32 v23, v33, v23, v32
+	v_mov_b32_e32 v32, 0
+	s_nop 0
+	s_waitcnt vmcnt(5)
+	s_nop 0
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	s_waitcnt vmcnt(5)
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	s_waitcnt vmcnt(5)
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	s_waitcnt vmcnt(5)
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	s_waitcnt vmcnt(5)
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	s_waitcnt vmcnt(5)
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	s_and_saveexec_b64 s[8:9], s[10:11]
+	; mask branch BB0_224
+	s_cbranch_execz BB0_224
+BB0_223:                                ; %if.then.i.i8510.i
+	v_mul_lo_u32 v32, v15, 17
+	v_mov_b32_e32 v33, 0x9080
+	v_cndmask_b32_e64 v33, v33, 0, vcc
+	v_add_u32_e32 v34, v18, v16
+	v_add3_u32 v32, v34, v33, v32
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v32, v[32:33], s[16:17]
+BB0_224:                                ; %if.then.i29.i.i.i.i609.i.i.i.i8159.i
+	s_or_b64 exec, exec, s[8:9]
+	v_mov_b32_e32 v33, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v31, v33, v32, v31
+	v_add_u32_e32 v32, v26, v14
+	v_add_u32_e32 v33, v27, v19
+	v_cmp_gt_u32_e64 s[8:9], 17, v32
+	v_cmp_gt_u32_e64 s[10:11], 17, v33
+	s_and_b64 s[10:11], s[10:11], s[8:9]
+	v_mov_b32_e32 v32, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[8:9], s[10:11]
+	; mask branch BB0_226
+	s_cbranch_execz BB0_226
+BB0_225:                                ; %if.then.i.i8266.i
+	v_mul_lo_u32 v32, v26, 17
+	v_mov_b32_e32 v33, 0x9080
+	v_cndmask_b32_e64 v33, v33, 0, s[4:5]
+	v_add_u32_e32 v34, v27, v16
+	v_add3_u32 v32, v34, v33, v32
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v32, v[32:33], s[16:17]
+BB0_226:                                ; %if.then.i29.i.i.i.i609.i.i.i.i7915.i
+	s_or_b64 exec, exec, s[8:9]
+	v_mov_b32_e32 v33, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v25, v33, v32, v25
+	v_add_u32_e32 v32, v28, v14
+	v_add_u32_e32 v33, v29, v19
+	v_cmp_gt_u32_e64 s[8:9], 17, v32
+	v_cmp_gt_u32_e64 s[10:11], 17, v33
+	s_and_b64 s[10:11], s[10:11], s[8:9]
+	v_mov_b32_e32 v32, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[8:9], s[10:11]
+	; mask branch BB0_228
+	s_cbranch_execz BB0_228
+BB0_227:                                ; %if.then.i.i8022.i
+	v_mul_lo_u32 v32, v28, 17
+	v_mov_b32_e32 v33, 0x9080
+	v_cndmask_b32_e64 v33, v33, 0, s[6:7]
+	v_add_u32_e32 v34, v29, v16
+	v_add3_u32 v32, v34, v33, v32
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v32, v[32:33], s[16:17]
+BB0_228:                                ; %if.then.i29.i.i.i.i.i.i.i.i7606.i
+	s_or_b64 exec, exec, s[8:9]
+	v_mov_b32_e32 v33, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v24, v33, v32, v24
+	v_add_u32_e32 v32, 1, v30
+	v_add_u32_e32 v33, -6, v30
+	v_cmp_gt_i32_e64 s[8:9], 7, v32
+	v_cndmask_b32_e64 v36, v33, v32, s[8:9]
+	v_cmp_lt_i32_e64 s[8:9], 6, v32
+	v_cndmask_b32_e64 v33, 0, 1, s[8:9]
+	v_addc_co_u32_e64 v32, s[8:9], 0, v21, s[8:9]
+	v_cmp_lt_i32_e64 s[10:11], 0, v32
+	v_cndmask_b32_e64 v34, 0, 1, s[10:11]
+	v_cmp_gt_i32_e64 s[8:9], 1, v32
+	v_subb_co_u32_e64 v35, s[10:11], v32, v21, s[10:11]
+	v_sub_u32_e32 v32, v36, v30
+	v_add_u32_e32 v36, v35, v14
+	v_add_u32_e32 v37, v32, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_230
+	s_cbranch_execz BB0_230
+BB0_229:                                ; %if.then.i.i7778.i
+	v_mul_lo_u32 v35, v35, 17
+	v_mov_b32_e32 v36, 0x121
+	v_cndmask_b32_e64 v36, v36, 0, s[8:9]
+	v_add_u32_e32 v37, v16, v32
+	v_add3_u32 v35, v37, v36, v35
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[35:36], s[16:17]
+BB0_230:                                ; %if.then.i29.i.i.i.i.i.i.i.i7362.i
+	s_or_b64 exec, exec, s[10:11]
+	v_sub_u32_e32 v33, v33, v34
+	v_and_b32_e32 v23, 0xffff, v23
+	v_add_u32_e32 v34, v18, v32
+	v_add_u32_e32 v35, v33, v15
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v23, v36, 16, v23
+	v_add_u32_e32 v36, v35, v14
+	v_add_u32_e32 v37, v34, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_232
+	s_cbranch_execz BB0_232
+BB0_231:                                ; %if.then.i.i7534.i
+	v_mul_lo_u32 v35, v35, 17
+	v_mov_b32_e32 v36, 0x9080
+	v_mov_b32_e32 v37, 0x121
+	v_cndmask_b32_e64 v36, v36, 0, vcc
+	v_cndmask_b32_e64 v37, v37, 0, s[8:9]
+	v_or_b32_e32 v36, v36, v37
+	v_add_u32_e32 v34, v34, v16
+	v_add3_u32 v34, v34, v36, v35
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[34:35], s[16:17]
+BB0_232:                                ; %if.then.i29.i.i.i.i.i.i.i.i7118.i
+	s_or_b64 exec, exec, s[10:11]
+	v_and_b32_e32 v31, 0xffff, v31
+	v_add_u32_e32 v34, v27, v32
+	v_add_u32_e32 v35, v33, v26
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v31, v36, 16, v31
+	v_add_u32_e32 v36, v35, v14
+	v_add_u32_e32 v37, v34, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_234
+	s_cbranch_execz BB0_234
+BB0_233:                                ; %if.then.i.i7290.i
+	v_mul_lo_u32 v35, v35, 17
+	v_mov_b32_e32 v36, 0x9080
+	v_mov_b32_e32 v37, 0x121
+	v_cndmask_b32_e64 v36, v36, 0, s[4:5]
+	v_cndmask_b32_e64 v37, v37, 0, s[8:9]
+	v_or_b32_e32 v36, v36, v37
+	v_add_u32_e32 v34, v34, v16
+	v_add3_u32 v34, v34, v36, v35
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[34:35], s[16:17]
+BB0_234:                                ; %if.then.i29.i.i.i.i.i.i.i.i6874.i
+	s_or_b64 exec, exec, s[10:11]
+	v_add_u32_e32 v33, v33, v28
+	v_add_u32_e32 v32, v29, v32
+	v_add_u32_e32 v34, v33, v14
+	v_add_u32_e32 v35, v32, v19
+	v_and_b32_e32 v25, 0xffff, v25
+	v_cmp_gt_u32_e64 s[10:11], 17, v34
+	v_cmp_gt_u32_e64 s[12:13], 17, v35
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v25, v36, 16, v25
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v34, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v24, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_236
+	s_cbranch_execz BB0_236
+BB0_235:                                ; %if.then.i.i7046.i
+	v_mul_lo_u32 v33, v33, 17
+	v_mov_b32_e32 v34, 0x9080
+	v_mov_b32_e32 v35, 0x121
+	v_cndmask_b32_e64 v34, v34, 0, s[6:7]
+	v_cndmask_b32_e64 v35, v35, 0, s[8:9]
+	v_or_b32_e32 v34, v34, v35
+	v_add_u32_e32 v32, v32, v16
+	v_add3_u32 v32, v32, v34, v33
+	v_ashrrev_i32_e32 v33, 31, v32
+	v_lshlrev_b64 v[32:33], 1, v[32:33]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v34, v[32:33], s[16:17]
+BB0_236:                                ; %if.then.i29.i.i.i.i.i.i.i.i6630.i
+	s_or_b64 exec, exec, s[10:11]
+	v_and_b32_e32 v24, 0xffff, v24
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v33, v34, 16, v24
+	v_add_u32_e32 v24, 2, v30
+	v_add_u32_e32 v32, -5, v30
+	v_cmp_gt_i32_e64 s[8:9], 7, v24
+	v_cndmask_b32_e64 v36, v32, v24, s[8:9]
+	v_cmp_lt_i32_e64 s[8:9], 6, v24
+	v_cndmask_b32_e64 v32, 0, 1, s[8:9]
+	v_addc_co_u32_e64 v24, s[8:9], 0, v21, s[8:9]
+	v_cmp_lt_i32_e64 s[10:11], 0, v24
+	v_cndmask_b32_e64 v34, 0, 1, s[10:11]
+	v_cmp_gt_i32_e64 s[8:9], 1, v24
+	v_subb_co_u32_e64 v35, s[10:11], v24, v21, s[10:11]
+	v_sub_u32_e32 v24, v36, v30
+	v_add_u32_e32 v36, v35, v14
+	v_add_u32_e32 v37, v24, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_238
+	s_cbranch_execz BB0_238
+BB0_237:                                ; %if.then.i.i6802.i
+	v_mul_lo_u32 v35, v35, 17
+	v_mov_b32_e32 v36, 0x121
+	v_cndmask_b32_e64 v36, v36, 0, s[8:9]
+	v_add_u32_e32 v37, v16, v24
+	v_add3_u32 v35, v37, v36, v35
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[35:36], s[16:17]
+BB0_238:                                ; %if.then.i29.i.i.i.i.i.i.i.i6386.i
+	s_or_b64 exec, exec, s[10:11]
+	v_sub_u32_e32 v32, v32, v34
+	v_mov_b32_e32 v35, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v22, v35, v36, v22
+	v_add_u32_e32 v34, v32, v15
+	v_add_u32_e32 v35, v18, v24
+	v_add_u32_e32 v36, v34, v14
+	v_add_u32_e32 v37, v35, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_240
+	s_cbranch_execz BB0_240
+BB0_239:                                ; %if.then.i.i6558.i
+	v_mov_b32_e32 v36, 0x9080
+	v_mov_b32_e32 v37, 0x121
+	v_mul_lo_u32 v34, v34, 17
+	v_cndmask_b32_e64 v36, v36, 0, vcc
+	v_cndmask_b32_e64 v37, v37, 0, s[8:9]
+	v_or_b32_e32 v36, v36, v37
+	v_add_u32_e32 v35, v36, v35
+	v_add3_u32 v34, v35, v34, v16
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[34:35], s[16:17]
+BB0_240:                                ; %if.then.i29.i.i.i.i.i.i.i.i6142.i
+	s_or_b64 exec, exec, s[10:11]
+	v_mov_b32_e32 v34, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v20, v34, v36, v20
+	v_add_u32_e32 v34, v32, v26
+	v_add_u32_e32 v35, v27, v24
+	v_add_u32_e32 v36, v34, v14
+	v_add_u32_e32 v37, v35, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v36
+	v_cmp_gt_u32_e64 s[12:13], 17, v37
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v36, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_242
+	s_cbranch_execz BB0_242
+BB0_241:                                ; %if.then.i.i6314.i
+	v_mov_b32_e32 v36, 0x9080
+	v_mov_b32_e32 v37, 0x121
+	v_mul_lo_u32 v34, v34, 17
+	v_cndmask_b32_e64 v36, v36, 0, s[4:5]
+	v_cndmask_b32_e64 v37, v37, 0, s[8:9]
+	v_or_b32_e32 v36, v36, v37
+	v_add_u32_e32 v35, v36, v35
+	v_add3_u32 v34, v35, v34, v16
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v36, v[34:35], s[16:17]
+BB0_242:                                ; %if.then.i29.i.i.i.i.i.i.i.i5898.i
+	s_or_b64 exec, exec, s[10:11]
+	v_mov_b32_e32 v34, 0xffff
+	v_add_u32_e32 v24, v29, v24
+	v_add_u32_e32 v32, v32, v28
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v17, v34, v36, v17
+	v_add_u32_e32 v34, v32, v14
+	v_add_u32_e32 v35, v24, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v34
+	v_cmp_gt_u32_e64 s[12:13], 17, v35
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v34, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_244
+	s_cbranch_execz BB0_244
+BB0_243:                                ; %if.then.i.i6070.i
+	v_mov_b32_e32 v34, 0x9080
+	v_mov_b32_e32 v35, 0x121
+	v_mul_lo_u32 v32, v32, 17
+	v_cndmask_b32_e64 v34, v34, 0, s[6:7]
+	v_cndmask_b32_e64 v35, v35, 0, s[8:9]
+	v_or_b32_e32 v34, v34, v35
+	v_add_u32_e32 v24, v34, v24
+	v_add3_u32 v34, v24, v32, v16
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v34, v[34:35], s[16:17]
+BB0_244:                                ; %if.then.i29.i.i.i.i.i.i.i.i5654.i
+	s_or_b64 exec, exec, s[10:11]
+	v_mov_b32_e32 v24, 0xffff
+	s_waitcnt vmcnt(0)
+	v_bfi_b32 v9, v24, v34, v9
+	v_add_u32_e32 v24, 3, v30
+	v_add_u32_e32 v32, -4, v30
+	v_cmp_gt_i32_e64 s[8:9], 7, v24
+	v_cndmask_b32_e64 v35, v32, v24, s[8:9]
+	v_cmp_lt_i32_e64 s[8:9], 6, v24
+	v_cndmask_b32_e64 v32, 0, 1, s[8:9]
+	v_addc_co_u32_e64 v24, s[8:9], 0, v21, s[8:9]
+	v_cmp_lt_i32_e64 s[10:11], 0, v24
+	v_cmp_gt_i32_e64 s[8:9], 1, v24
+	v_cndmask_b32_e64 v34, 0, 1, s[10:11]
+	v_subb_co_u32_e64 v24, s[10:11], v24, v21, s[10:11]
+	v_sub_u32_e32 v21, v35, v30
+	v_add_u32_e32 v30, v24, v14
+	v_add_u32_e32 v35, v21, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v30
+	v_cmp_gt_u32_e64 s[12:13], 17, v35
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v30, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v22, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_246
+	s_cbranch_execz BB0_246
+BB0_245:                                ; %if.then.i.i5826.i
+	v_mul_lo_u32 v24, v24, 17
+	v_mov_b32_e32 v30, 0x121
+	v_cndmask_b32_e64 v30, v30, 0, s[8:9]
+	v_add_u32_e32 v30, v30, v21
+	v_add3_u32 v35, v30, v24, v16
+	v_ashrrev_i32_e32 v36, 31, v35
+	v_lshlrev_b64 v[35:36], 1, v[35:36]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v30, v[35:36], s[16:17]
+BB0_246:                                ; %if.then.i29.i.i.i.i.i.i.i.i5410.i
+	s_or_b64 exec, exec, s[10:11]
+	v_and_b32_e32 v22, 0xffff, v22
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v24, v30, 16, v22
+	v_sub_u32_e32 v22, v32, v34
+	v_add_u32_e32 v15, v22, v15
+	v_add_u32_e32 v18, v18, v21
+	v_add_u32_e32 v30, v15, v14
+	v_add_u32_e32 v32, v18, v19
+	v_cmp_gt_u32_e64 s[10:11], 17, v30
+	v_cmp_gt_u32_e64 s[12:13], 17, v32
+	s_and_b64 s[12:13], s[12:13], s[10:11]
+	v_mov_b32_e32 v30, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v24, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v20, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_248
+	s_cbranch_execz BB0_248
+BB0_247:                                ; %if.then.i.i5582.i
+	v_mov_b32_e32 v30, 0x9080
+	v_mov_b32_e32 v32, 0x121
+	v_mul_lo_u32 v15, v15, 17
+	v_cndmask_b32_e64 v30, v30, 0, vcc
+	v_cndmask_b32_e64 v32, v32, 0, s[8:9]
+	v_or_b32_e32 v30, v30, v32
+	v_add_u32_e32 v18, v30, v18
+	v_add3_u32 v34, v18, v15, v16
+	v_ashrrev_i32_e32 v35, 31, v34
+	v_lshlrev_b64 v[34:35], 1, v[34:35]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v30, v[34:35], s[16:17]
+BB0_248:                                ; %if.then.i29.i.i.i.i.i.i.i.i5166.i
+	s_or_b64 exec, exec, s[10:11]
+	v_and_b32_e32 v15, 0xffff, v20
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v32, v30, 16, v15
+	v_add_u32_e32 v18, v22, v26
+	v_add_u32_e32 v15, v27, v21
+	v_add_u32_e32 v20, v18, v14
+	v_add_u32_e32 v26, v15, v19
+	v_cmp_gt_u32_e32 vcc, 17, v20
+	v_cmp_gt_u32_e64 s[10:11], 17, v26
+	s_and_b64 s[12:13], s[10:11], vcc
+	v_mov_b32_e32 v20, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v24, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v32, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v17, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	s_and_saveexec_b64 s[10:11], s[12:13]
+	; mask branch BB0_250
+	s_cbranch_execz BB0_250
+BB0_249:                                ; %if.then.i.i5338.i
+	v_mov_b32_e32 v20, 0x9080
+	v_mov_b32_e32 v26, 0x121
+	v_mul_lo_u32 v18, v18, 17
+	v_cndmask_b32_e64 v20, v20, 0, s[4:5]
+	v_cndmask_b32_e64 v26, v26, 0, s[8:9]
+	v_or_b32_e32 v20, v20, v26
+	v_add_u32_e32 v15, v20, v15
+	v_add3_u32 v26, v15, v18, v16
+	v_ashrrev_i32_e32 v27, 31, v26
+	v_lshlrev_b64 v[26:27], 1, v[26:27]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v20, v[26:27], s[16:17]
+BB0_250:                                ; %if.then.i29.i.i.i.i.i.i.i.i5078.i
+	s_or_b64 exec, exec, s[10:11]
+	v_and_b32_e32 v15, 0xffff, v17
+	v_add_u32_e32 v17, v22, v28
+	v_add_u32_e32 v18, v29, v21
+	v_add_u32_e32 v14, v17, v14
+	v_add_u32_e32 v19, v18, v19
+	v_cmp_gt_u32_e32 vcc, 17, v14
+	v_cmp_gt_u32_e64 s[4:5], 17, v19
+	s_waitcnt vmcnt(0)
+	v_lshl_or_b32 v15, v20, 16, v15
+	s_and_b64 s[10:11], s[4:5], vcc
+	v_mov_b32_e32 v14, 0
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v24, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v9, off, s[0:3], s24 offset:76
+	buffer_store_dword v32, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v15, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	s_and_saveexec_b64 s[4:5], s[10:11]
+	; mask branch BB0_252
+	s_cbranch_execz BB0_252
+BB0_251:                                ; %if.then.i.i.i
+	v_mov_b32_e32 v14, 0x9080
+	v_mov_b32_e32 v19, 0x121
+	v_mul_lo_u32 v17, v17, 17
+	v_cndmask_b32_e64 v14, v14, 0, s[6:7]
+	v_cndmask_b32_e64 v19, v19, 0, s[8:9]
+	v_or_b32_e32 v14, v14, v19
+	v_add_u32_e32 v14, v14, v18
+	v_add3_u32 v16, v14, v17, v16
+	v_ashrrev_i32_e32 v17, 31, v16
+	v_lshlrev_b64 v[16:17], 1, v[16:17]
+	s_nop 0
+	s_nop 0
+	global_load_ushort v14, v[16:17], s[16:17]
+BB0_252:                                ; %_ZNK2ck62GridwiseBatchedGemmTransposedANormalBNormalCXdlopsFp16Bfp16_v1ILi2312ELi64EDF16_fDF16_KNS_27TransformedTensorDescriptorINS1_INS1_INS1_INS_22NativeTensorDescriptorIJNS_15NativeDimensionILi128ELi896EEENS3_ILi896ELi1EEEEEENS_5TupleIJNS_11PassThroughILi128EEENS8_ILi896EEEEEENS7_IJNS_8SequenceIJLi0EEEENSC_IJLi1EEEEEEESF_EENS7_IJS9_NS_7UnMergeINSC_IJLi224ELi4EEEEEEEEESF_NS7_IJSD_NSC_IJLi1ELi2EEEEEEEEENS7_IJNS8_ILi224EEES9_NS8_ILi4EEEEEENS7_IJSE_SD_NSC_IJLi2EEEEEEENS7_IJSD_SE_SR_EEEEENS7_IJNSH_INSC_IJLi1ELi224EEEEEES9_SP_EEEST_NS7_IJNSC_IJLi0ELi1EEEESR_NSC_IJLi3EEEEEEEEEKNS1_INS1_INS1_INS1_INS1_INS1_INS2_IJNS3_ILi128ELi36992EEENS3_ILi128ELi289EEENS3_ILi17ELi17EEENS3_ILi17ELi1EEEEEENS7_IJS9_S9_NS_3PadINSC_IJLi17ELi17EEEENSC_IJLi0ELi3EEEES1A_Lb0EEEEEENS7_IJSD_SE_NSC_IJLi2ELi3EEEEEEES1E_EENS7_IJS9_S9_NS_5EmbedILi17ENSC_IJLi1ELi17EEEENSC_IJLi1ELi1ELi0EEEELb0EEENS1G_ILi23ENSC_IJLi7ELi17EEEES1I_Lb0EEEEEENS7_IJSD_SE_SR_SZ_EEENS7_IJSD_SE_S1D_NSC_IJLi4ELi5EEEEEEEEENS7_IJNS_5MergeINSC_IJLi128ELi1ELi7EEEEEENS1R_INSC_I
+	s_or_b64 exec, exec, s[4:5]
+	ds_read2_b64 v[16:19], v12 offset1:32
+	ds_read2st64_b64 v[26:29], v13 offset1:1
+	ds_read2st64_b64 v[34:37], v13 offset0:2 offset1:3
+	v_mov_b32_e32 v20, 0xffff
+	v_and_b32_e32 v9, v20, v9
+	v_bfi_b32 v6, v20, v6, v6
+	v_bfi_b32 v5, v20, v5, v5
+	v_bfi_b32 v8, v20, v8, v8
+	v_bfi_b32 v7, v20, v7, v7
+	s_waitcnt lgkmcnt(1)
+	v_mfma_f32_32x32x4f16 a[0:31], v[16:17], v[26:27], a[0:31] cbsz:1
+	s_mov_b32 s4, 0x71625345
+	s_movk_i32 s5, 0x121
+	s_movk_i32 s6, 0x1000
+	s_movk_i32 s7, 0x2000
+	s_movk_i32 s8, 0x3000
+	v_mov_b32_e32 v26, v15
+	ds_write2_b64 v11, v[23:24], v[31:32] offset1:1
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v23, off, s[0:3], s24 offset:48
+	buffer_store_dword v24, off, s[0:3], s24 offset:52
+	buffer_store_dword v31, off, s[0:3], s24 offset:56
+	buffer_store_dword v32, off, s[0:3], s24 offset:60
+	buffer_store_dword v25, off, s[0:3], s24 offset:64
+	buffer_store_dword v15, off, s[0:3], s24 offset:68
+	buffer_store_dword v33, off, s[0:3], s24 offset:72
+	v_mfma_f32_32x32x4f16 a[0:31], v[18:19], v[28:29], a[0:31] cbsz:1
+	ds_read2_b64 v[16:19], v12 offset0:64 offset1:96
+	ds_write2_b64 v10, v[5:6], v[7:8] offset1:32
+	s_waitcnt lgkmcnt(1)
+	v_mfma_f32_32x32x4f16 a[0:31], v[16:17], v[34:35], a[0:31] cbsz:1
+	s_waitcnt vmcnt(7)
+	v_lshl_or_b32 v34, v14, 16, v9
+	ds_write2_b64 v11, v[25:26], v[33:34] offset0:2 offset1:3
+	s_nop 0
+	s_nop 0
+	buffer_store_dword v34, off, s[0:3], s24 offset:76
+	s_waitcnt lgkmcnt(0)
+	; wave barrier
+	s_waitcnt lgkmcnt(0)
+	ds_read2_b64 v[5:8], v1 offset1:32
+	ds_read2st64_b64 v[9:12], v2 offset1:1
+	ds_read2st64_b64 v[13:16], v2 offset0:2 offset1:3
+	v_and_b32_e32 v2, 32, v0
+	v_mfma_f32_32x32x4f16 a[0:31], v[18:19], v[36:37], a[0:31] cbsz:1
+	s_waitcnt lgkmcnt(1)
+	v_mfma_f32_32x32x4f16 a[0:31], v[5:6], v[9:10], a[0:31] cbsz:1
+	v_lshrrev_b32_e32 v5, 3, v0
+	v_sub_u32_e32 v0, v0, v2
+	v_add_u32_e32 v4, v4, v0
+	v_and_or_b32 v5, v5, 4, v3
+	ds_read2_b64 v[0:3], v1 offset0:64 offset1:96
+	v_add_u32_e32 v9, 32, v4
+	v_mul_hi_i32 v10, v9, s4
+	v_mov_b32_e32 v6, s19
+	v_mfma_f32_32x32x4f16 a[0:31], v[7:8], v[11:12], a[0:31] cbsz:1
+	v_ashrrev_i32_e32 v7, 31, v5
+	v_lshrrev_b32_e32 v7, 29, v7
+	v_add_u32_e32 v7, v5, v7
+	v_and_b32_e32 v7, -8, v7
+	v_sub_u32_e32 v5, v5, v7
+	v_ashrrev_i32_e32 v11, 31, v5
+	v_lshrrev_b32_e32 v11, 30, v11
+	v_add_u32_e32 v5, v5, v11
+	v_mul_hi_i32 v8, v4, s4
+	v_and_b32_e32 v5, -4, v5
+	v_add_u32_e32 v5, v5, v7
+	v_mul_lo_u32 v5, v5, s5
+	v_lshrrev_b32_e32 v12, 31, v8
+	v_lshrrev_b32_e32 v8, 7, v8
+	v_add_u32_e32 v8, v8, v12
+	s_waitcnt lgkmcnt(0)
+	v_mfma_f32_32x32x4f16 a[0:31], v[0:1], v[13:14], a[0:31] cbsz:1
+	v_lshrrev_b32_e32 v0, 31, v10
+	v_lshrrev_b32_e32 v1, 7, v10
+	v_add_u32_e32 v0, v1, v0
+	v_mul_i32_i24_e32 v7, 0x8f5f, v8
+	v_mul_i32_i24_e32 v1, 0x8f5f, v0
+	v_add3_u32 v0, v7, v4, v5
+	v_add3_u32 v4, v1, v9, v5
+	v_ashrrev_i32_e32 v1, 31, v0
+	v_lshlrev_b64 v[0:1], 1, v[0:1]
+	v_ashrrev_i32_e32 v5, 31, v4
+	v_add_co_u32_e32 v8, vcc, s18, v0
+	v_addc_co_u32_e32 v9, vcc, v6, v1, vcc
+	v_lshlrev_b64 v[4:5], 1, v[4:5]
+	v_mfma_f32_32x32x4f16 a[0:31], v[2:3], v[15:16], a[0:31] cbsz:1
+	v_add_co_u32_e32 v2, vcc, s6, v8
+	v_addc_co_u32_e32 v3, vcc, 0, v9, vcc
+	v_add_co_u32_e32 v6, vcc, s7, v8
+	v_addc_co_u32_e32 v7, vcc, 0, v9, vcc
+	v_add_co_u32_e32 v8, vcc, s8, v8
+	v_addc_co_u32_e32 v9, vcc, 0, v9, vcc
+	s_nop 7
+	s_nop 3
+	v_accvgpr_read_b32 v10, a0
+	v_accvgpr_read_b32 v11, a1
+	v_accvgpr_read_b32 v12, a2
+	v_accvgpr_read_b32 v13, a3
+	v_accvgpr_read_b32 v14, a4
+	v_accvgpr_read_b32 v15, a5
+	v_accvgpr_read_b32 v16, a6
+	v_accvgpr_read_b32 v17, a7
+	v_accvgpr_read_b32 v18, a8
+	v_accvgpr_read_b32 v19, a9
+	v_accvgpr_read_b32 v20, a10
+	v_accvgpr_read_b32 v21, a11
+	v_accvgpr_read_b32 v22, a12
+	v_accvgpr_read_b32 v23, a13
+	v_accvgpr_read_b32 v24, a14
+	v_accvgpr_read_b32 v25, a15
+	s_setreg_imm32_b32 hwreg(HW_REG_MODE, 2, 2), 0
+	v_cvt_f16_f32_e32 v10, v10
+	v_cvt_f16_f32_e32 v11, v11
+	v_cvt_f16_f32_e32 v12, v12
+	v_cvt_f16_f32_e32 v13, v13
+	v_cvt_f16_f32_e32 v14, v14
+	v_cvt_f16_f32_e32 v15, v15
+	v_cvt_f16_f32_e32 v16, v16
+	v_cvt_f16_f32_e32 v17, v17
+	v_cvt_f16_f32_e32 v18, v18
+	v_cvt_f16_f32_e32 v19, v19
+	v_cvt_f16_f32_e32 v20, v20
+	v_cvt_f16_f32_e32 v21, v21
+	v_cvt_f16_f32_e32 v22, v22
+	v_cvt_f16_f32_e32 v23, v23
+	v_cvt_f16_f32_e32 v24, v24
+	v_cvt_f16_f32_e32 v25, v25
+	v_accvgpr_read_b32 v26, a16
+	v_cvt_f16_f32_e32 v26, v26
+	s_nop 0
+	s_nop 0
+	global_store_short v[0:1], v10, s[18:19]
+	global_store_short v[0:1], v11, s[18:19] offset:578
+	global_store_short v[0:1], v12, s[18:19] offset:1156
+	global_store_short v[0:1], v13, s[18:19] offset:1734
+	global_store_short v[2:3], v14, off offset:528
+	global_store_short v[2:3], v15, off offset:1106
+	global_store_short v[2:3], v16, off offset:1684
+	global_store_short v[2:3], v17, off offset:2262
+	global_store_short v[6:7], v18, off offset:1056
+	global_store_short v[6:7], v19, off offset:1634
+	global_store_short v[6:7], v20, off offset:2212
+	global_store_short v[6:7], v21, off offset:2790
+	global_store_short v[8:9], v22, off offset:1584
+	global_store_short v[8:9], v23, off offset:2162
+	global_store_short v[8:9], v24, off offset:2740
+	global_store_short v[8:9], v25, off offset:3318
+	v_mov_b32_e32 v0, s19
+	v_add_co_u32_e32 v2, vcc, s18, v4
+	v_accvgpr_read_b32 v1, a18
+	v_accvgpr_read_b32 v6, a19
+	v_addc_co_u32_e32 v3, vcc, v0, v5, vcc
+	v_accvgpr_read_b32 v0, a17
+	v_cvt_f16_f32_e32 v0, v0
+	v_cvt_f16_f32_e32 v1, v1
+	v_cvt_f16_f32_e32 v6, v6
+	v_accvgpr_read_b32 v7, a23
+	v_cvt_f16_f32_e32 v7, v7
+	s_nop 0
+	s_nop 0
+	global_store_short v[4:5], v26, s[18:19]
+	global_store_short v[4:5], v0, s[18:19] offset:578
+	global_store_short v[4:5], v1, s[18:19] offset:1156
+	global_store_short v[4:5], v6, s[18:19] offset:1734
+	v_accvgpr_read_b32 v5, a21
+	v_accvgpr_read_b32 v6, a22
+	v_accvgpr_read_b32 v0, a20
+	v_cvt_f16_f32_e32 v4, v0
+	v_cvt_f16_f32_e32 v5, v5
+	v_cvt_f16_f32_e32 v6, v6
+	v_add_co_u32_e32 v0, vcc, s6, v2
+	v_addc_co_u32_e32 v1, vcc, 0, v3, vcc
+	s_nop 0
+	s_nop 0
+	global_store_short v[0:1], v4, off offset:528
+	global_store_short v[0:1], v5, off offset:1106
+	global_store_short v[0:1], v6, off offset:1684
+	global_store_short v[0:1], v7, off offset:2262
+	v_accvgpr_read_b32 v5, a25
+	v_accvgpr_read_b32 v6, a26
+	v_accvgpr_read_b32 v7, a27
+	v_accvgpr_read_b32 v0, a24
+	v_cvt_f16_f32_e32 v4, v0
+	v_cvt_f16_f32_e32 v5, v5
+	v_cvt_f16_f32_e32 v6, v6
+	v_cvt_f16_f32_e32 v7, v7
+	v_add_co_u32_e32 v0, vcc, s7, v2
+	v_addc_co_u32_e32 v1, vcc, 0, v3, vcc
+	s_nop 0
+	s_nop 0
+	global_store_short v[0:1], v4, off offset:1056
+	global_store_short v[0:1], v5, off offset:1634
+	global_store_short v[0:1], v6, off offset:2212
+	global_store_short v[0:1], v7, off offset:2790
+	v_accvgpr_read_b32 v0, a28
+	v_cvt_f16_f32_e32 v4, v0
+	v_add_co_u32_e32 v0, vcc, s8, v2
+	v_accvgpr_read_b32 v2, a29
+	v_accvgpr_read_b32 v5, a31
+	v_addc_co_u32_e32 v1, vcc, 0, v3, vcc
+	v_accvgpr_read_b32 v3, a30
+	v_cvt_f16_f32_e32 v2, v2
+	v_cvt_f16_f32_e32 v3, v3
+	v_cvt_f16_f32_e32 v5, v5
+	s_nop 0
+	s_nop 0
+	global_store_short v[0:1], v4, off offset:1584
+	global_store_short v[0:1], v2, off offset:2162
+	global_store_short v[0:1], v3, off offset:2740
+	global_store_short v[0:1], v5, off offset:3318
+	s_endpgm
+	.section	.rodata,#alloc
+	.p2align	6
+	.amdhsa_kernel gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer
+		.amdhsa_group_segment_fixed_size 8192
+		.amdhsa_private_segment_fixed_size 80
+		.amdhsa_user_sgpr_private_segment_buffer 1
+		.amdhsa_user_sgpr_dispatch_ptr 1
+		.amdhsa_user_sgpr_queue_ptr 0
+		.amdhsa_user_sgpr_kernarg_segment_ptr 1
+		.amdhsa_user_sgpr_dispatch_id 0
+		.amdhsa_user_sgpr_flat_scratch_init 1
+		.amdhsa_user_sgpr_private_segment_size 0
+		.amdhsa_system_sgpr_private_segment_wavefront_offset 1
+		.amdhsa_system_sgpr_workgroup_id_x 1
+		.amdhsa_system_sgpr_workgroup_id_y 0
+		.amdhsa_system_sgpr_workgroup_id_z 0
+		.amdhsa_system_sgpr_workgroup_info 0
+		.amdhsa_system_vgpr_workitem_id 2
+		.amdhsa_next_free_vgpr 59
+		.amdhsa_next_free_sgpr 33
+		.amdhsa_float_round_mode_32 0
+		.amdhsa_float_round_mode_16_64 0
+		.amdhsa_float_denorm_mode_32 0
+		.amdhsa_float_denorm_mode_16_64 3
+		.amdhsa_dx10_clamp 1
+		.amdhsa_ieee_mode 1
+		.amdhsa_fp16_overflow 0
+		.amdhsa_exception_fp_ieee_invalid_op 0
+		.amdhsa_exception_fp_denorm_src 0
+		.amdhsa_exception_fp_ieee_div_zero 0
+		.amdhsa_exception_fp_ieee_overflow 0
+		.amdhsa_exception_fp_ieee_underflow 0
+		.amdhsa_exception_fp_ieee_inexact 0
+		.amdhsa_exception_int_div_zero 0
+	.end_amdhsa_kernel
+	.text
+.Lfunc_end0:
+	.size	gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer, .Lfunc_end0-gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer
+                                        ; -- End function
+	.section	.AMDGPU.csdata
+; Kernel info:
+; codeLenInByte = 18832
+; NumSgprs: 39
+; NumVgprs: 59
+; NumAgprs: 32
+; TotalNumVgprs: 59
+; ScratchSize: 80
+; MemoryBound: 0
+; FloatMode: 192
+; IeeeMode: 1
+; LDSByteSize: 8192 bytes/workgroup (compile time only)
+; SGPRBlocks: 4
+; VGPRBlocks: 14
+; NumSGPRsForWavesPerEU: 39
+; NumVGPRsForWavesPerEU: 59
+; Occupancy: 2
+; WaveLimiterHint : 1
+; COMPUTE_PGM_RSRC2:USER_SGPR: 10
+; COMPUTE_PGM_RSRC2:TRAP_HANDLER: 0
+; COMPUTE_PGM_RSRC2:TGID_X_EN: 1
+; COMPUTE_PGM_RSRC2:TGID_Y_EN: 0
+; COMPUTE_PGM_RSRC2:TGID_Z_EN: 0
+; COMPUTE_PGM_RSRC2:TIDIG_COMP_CNT: 2
+	.ident	"HCC clang version 10.0.0 (/data/jenkins-workspace/compute-rocm-rel-3.1/external/hcc-tot/llvm-project/clang 6a70953f87a209f37ea7884abdbb6bcb2d6db732) (based on HCC 3.1.20023-6d267cfb-6a70953f87a )"
+	.section	".note.GNU-stack"
+	.amdgpu_metadata
+---
+amdhsa.kernels:
+  - .args:
+      - .address_space:  generic
+        .name:           p_in_global
+        .offset:         0
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     f16
+      - .address_space:  generic
+        .name:           p_wei_global
+        .offset:         8
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     f16
+      - .address_space:  generic
+        .name:           p_out_global
+        .offset:         16
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     f16
+    .group_segment_fixed_size: 8192
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 24
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 64
+    .name:           gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer
+    .private_segment_fixed_size: 80
+    .sgpr_count:     39
+    .sgpr_spill_count: 0
+    .symbol:         gridwise_convolution_implicit_gemm_v4r4_gen_xdlops_nchw_kcyx_nkhw_lds_double_buffer.kd
+    .vgpr_count:     59
+    .vgpr_spill_count: 0
+    .wavefront_size: 64
+amdhsa.version:
+  - 1
+  - 0
+...
+
+	.end_amdgpu_metadata
